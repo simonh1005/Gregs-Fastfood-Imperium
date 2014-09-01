@@ -20,8 +20,7 @@ public class ServerWin extends JFrame
 	Sender sender;
 
 	public ServerWin()
-	{
-		
+	{				
 		super("ChatServer");
 		sender = new Sender(this);
 		display.setEditable(false);
