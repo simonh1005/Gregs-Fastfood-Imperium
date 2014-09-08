@@ -6,7 +6,7 @@ import java.net.*;
 public class udpServer {
 	static DatagramSocket socket;
 	public static void main(String[] args) {
-		
+		//das ist die neueste version
 		try {
 			socket = new DatagramSocket(628);
 			// Auf Anfrage warten
