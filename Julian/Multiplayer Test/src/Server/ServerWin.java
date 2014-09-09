@@ -53,6 +53,7 @@ public class ServerWin extends JFrame
 		} catch (IOException e)
 		{
 			System.out.println("Belegen des Ports fehlgeschlagen");
+			
 			System.exit(ABORT);
 		}
 
