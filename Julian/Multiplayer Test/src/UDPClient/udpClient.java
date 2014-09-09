@@ -18,11 +18,14 @@ public class udpClient
 			DatagramSocket socket = new DatagramSocket();
 			socket.setBroadcast(true);
 			socket.send(packet);
-			socket.close();
 			
-			System.out.println("No error occured");
-			
+			socket.setSoTimeout(1000);
 			socket.receive(packet);
+			InetAddress ip = packet.getAddress();
+			
+			System.out.println("Server found at IP:" + ip);
+			socket.close();
+			System.out.println("No error occured");
 		} catch (SocketException e)
 		{
 			e.printStackTrace();
@@ -35,7 +38,7 @@ public class udpClient
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 	}
 
 }

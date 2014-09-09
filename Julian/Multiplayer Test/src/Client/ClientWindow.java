@@ -26,8 +26,8 @@ import javax.swing.JTextField;
 
 public class ClientWindow extends JFrame implements ActionListener, KeyListener
 {
-	static final String server = "localhost";
-	static final int port = 99;
+	static String server = "localhost";
+	static int port = 99;
 	boolean isAdmin;
 	JButton start_btn;
 	JTextField chat_tb = new JTextField(255);
@@ -55,7 +55,16 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 		buildUI();
 
 	}
+	public ClientWindow(String server, int tcpPort) throws HeadlessException
+	{
+		super();
+		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein");		
+		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.server = server;
+		this.port = tcpPort;
+		buildUI();
 
+	}
 	private void buildUI()
 	{
 		this.setVisible(true);

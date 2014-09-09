@@ -6,7 +6,7 @@ import java.net.*;
 public class udpServer {
 	static DatagramSocket socket;
 	public static void main(String[] args) {
-		//neuer Kommentar
+		System.out.println("Server getartet");
 		try {
 			socket = new DatagramSocket(628);
 			// Auf Anfrage warten
@@ -34,7 +34,8 @@ public class udpServer {
 	}
 
 	private static void answer(InetAddress a, int port) throws IOException {
-		String ip = socket.getLocalAddress().toString();
+//		String ip = socket.getLocalAddress().toString();
+		String ip = "UDPServer answer";
 		byte[] data = ip.getBytes();
 		DatagramPacket packet = new DatagramPacket(data, data.length, a, port);
 		
