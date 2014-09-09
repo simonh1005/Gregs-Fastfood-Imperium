@@ -1,6 +1,6 @@
-/Client
-/Server
+/AutomaticLauncher.class
+/Client/
+/Server/
 /ServerStarter.class
 /Starter.class
-/UDPClient
-/AutomaticLauncher.class
+/UDPClient/
