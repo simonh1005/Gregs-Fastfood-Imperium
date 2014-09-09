@@ -19,8 +19,7 @@ public class ClientHandler extends Thread
 	{
 		client = s;
 		this.sender = sender;
-		this.parent = parent;
-		System.out.println("Neuer Client handler");
+		this.parent = parent;		
 	}
 
 	@Override
@@ -34,8 +33,7 @@ public class ClientHandler extends Thread
 			BufferedReader rein = new BufferedReader(new InputStreamReader(
 					client.getInputStream()));
 
-			name = rein.readLine();
-			// System.out.println(name);
+			name = rein.readLine();			
 			parent.log("Neuer Spieler verbunden: " + name);
 			sender.sendToAll("<newPlayer>" +name, client, name, false);
 			sender.sendToAll("<msg>" +name +">Joined the room", client, name, false); //<msg><sender_name>text

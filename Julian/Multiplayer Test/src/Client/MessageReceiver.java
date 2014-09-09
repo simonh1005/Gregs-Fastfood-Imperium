@@ -44,6 +44,13 @@ public class MessageReceiver extends Thread
 					parent.displayMessage(ms[2], ms[1]);
 					break;
 				}
+				case "<exit":
+				{
+					if(ms[1].equals("server"))
+					{
+						ClientLogic.serverDisconnected();
+					}
+				}
 				default:
 					break;
 				}

@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -12,14 +14,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class ServerWin extends JFrame
 {
-	private static ServerWin instance;
+	private static ServerWin instance;	
 	public static final int port = 99;
-	JTextArea display = new JTextArea();
+	JTextArea display = new JTextArea();	
 	Sender sender;
 	DatagramSocket udpSocket;
 	ServerSocket server;
@@ -43,7 +46,11 @@ public class ServerWin extends JFrame
 		add(display, BorderLayout.CENTER);
 		this.setBounds(500, 500, 500, 500);
 		this.setIconImage(new ImageIcon("src/Server/Server.jpg").getImage());
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() { @Override
+	        public void windowClosing(WindowEvent event) {  exitServer(); }  });
+		
 		this.setVisible(true);
 		try
 		{
@@ -58,7 +65,6 @@ public class ServerWin extends JFrame
 		}
 
 	}
-
 	private void start()
 	{
 		log("Server gestartet" + "\n IP:"
@@ -127,5 +133,19 @@ public class ServerWin extends JFrame
 	public void log(String message)
 	{
 		display.append(message + "\n");
+	}
+
+	private void exitServer()
+	{
+		// Send Message to clients, so they can also close themselves
+		sender.sendToAll("<exit>server","server");
+		try
+		{
+			Thread.sleep(300);
+		} catch (InterruptedException e)
+		{			
+		}
+		System.exit(0);
+		
 	}
 }

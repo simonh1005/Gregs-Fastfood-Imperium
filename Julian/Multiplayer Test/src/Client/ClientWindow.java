@@ -82,6 +82,8 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 		content_panel.add(chat, BorderLayout.CENTER);
 		content_panel.add(chat_tb, BorderLayout.SOUTH);
 		add(content_panel, BorderLayout.CENTER);
+		
+		
 		connectToServer();
 	}
 
@@ -131,6 +133,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 			start_btn.setEnabled(true);
 		}
 		playerlistModel.addElement(name);
+
 	}
 	public void displayMessage(String message, String sender)
 	{
