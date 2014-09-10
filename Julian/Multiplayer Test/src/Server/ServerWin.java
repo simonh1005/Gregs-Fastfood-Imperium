@@ -22,6 +22,7 @@ public class ServerWin extends JFrame
 {
 	private static ServerWin instance;	
 	public static final int port = 99;
+	public static final int udpPort = 666;
 	JTextArea display = new JTextArea();	
 	Sender sender;
 	DatagramSocket udpSocket;
@@ -85,7 +86,7 @@ public class ServerWin extends JFrame
 	{
 		try
 		{
-			udpSocket = new DatagramSocket(628);
+			udpSocket = new DatagramSocket(udpPort);
 
 			DatagramPacket packet = new DatagramPacket(new byte[1024], 1024);
 			udpSocket.receive(packet); // wait for Broadcast of the client

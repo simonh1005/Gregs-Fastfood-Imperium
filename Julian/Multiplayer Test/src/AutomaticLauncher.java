@@ -11,7 +11,7 @@ import Client.ClientWindow;
 
 public class AutomaticLauncher
 {
-	static final int port = 628;
+	static final int port = 666;
 	static final int tcpPort = 99;
 
 	public static void main(String[] args)
