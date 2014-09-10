@@ -58,7 +58,7 @@ public class AutomaticLauncher
 		{
 			try
 			{
-				socket.setSoTimeout(1000);
+				socket.setSoTimeout(200);
 				socket.receive(packet);
 				InetAddress ip = packet.getAddress();
 				System.out.println("Server found at IP:" + ip);
