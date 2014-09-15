@@ -58,13 +58,31 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	public ClientWindow(String server, int tcpPort) throws HeadlessException
 	{
 		super();
-		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein");		
+		while(checkname() == false);		
 		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.server = server;
 		this.port = tcpPort;
 		buildUI();
 
 	}
+	private boolean checkname()
+	{
+		String[] forbiddenChars = {"  ", ",", ".", "/","<",">","}","{" };
+		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein (Mind. 3 Stellen; Keine Sonderzeichen");	
+		if(username.length() < 3 || username.length() >30)
+		{
+			return false;
+		}
+		for (String s:forbiddenChars)
+		{
+			if (username.contains(s));
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private void buildUI()
 	{
 		this.setVisible(true);

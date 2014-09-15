@@ -64,7 +64,6 @@ public class ServerWin extends JFrame
 			
 			System.exit(ABORT);
 		}
-
 	}
 	private void start()
 	{
