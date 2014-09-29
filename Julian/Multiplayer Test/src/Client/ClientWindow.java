@@ -68,7 +68,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	private boolean checkname()
 	{
 		String[] forbiddenChars = {"  ", ",", ".", "/","<",">","}","{" };
-		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein (Mind. 3 Stellen; Keine Sonderzeichen");	
+		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein (Mind. 3 Stellen; Keine Sonderzeichen)");	
 		if(username.length() < 3 || username.length() >30)
 		{
 			return false;
@@ -161,7 +161,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		// TODO Auto-generated method stub
+		
 		
 	}
 

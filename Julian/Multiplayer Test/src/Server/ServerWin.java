@@ -33,10 +33,8 @@ public class ServerWin extends JFrame
 		if (instance == null)
 		{
 			instance = new ServerWin();
-		}
-	
+		}	
 		return instance;
-
 	}
 
 	private ServerWin()
