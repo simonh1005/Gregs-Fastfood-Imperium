@@ -50,7 +50,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	public ClientWindow() throws HeadlessException
 	{
 		super();
-		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein");		
+		while(checkname() == false);
 		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		buildUI();
 
@@ -67,7 +67,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	}
 	private boolean checkname()
 	{
-		String[] forbiddenChars = {"  ", ",", ".", "/","<",">","}","{" };
+		String[] forbiddenChars = { ";",",", ".", "/","<",">","}","{" };
 		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein (Mind. 3 Stellen; Keine Sonderzeichen)");	
 		if(username.length() < 3 || username.length() >30)
 		{
@@ -75,7 +75,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 		}
 		for (String s:forbiddenChars)
 		{
-			if (username.contains(s));
+			if (username.contains(s))
 			{
 				return false;
 			}
@@ -114,7 +114,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					s.getInputStream()));
 			String posstring = in.readLine();
-			if (posstring.equals("1"))
+			if (posstring.equals("0"))
 			{
 				isAdmin = true;
 				start_btn = new JButton("Start");
