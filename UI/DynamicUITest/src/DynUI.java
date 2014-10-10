@@ -102,18 +102,4 @@ public class DynUI extends JFrame implements ActionListener
 		// TODO Auto-generated method stub
 
 	}
-
-//	private class LabelAdapter extends MouseAdapter
-//	{
-//		public void mouseEntered(MouseEvent e)
-//		{
-//			bezirk_lbl[0].setText(bezirke[0].toHTML());
-//			
-//		}
-//
-//		public void mouseExited(MouseEvent e)
-//		{
-//			bezirk_lbl[0].setText("");
-//		}
-//	}
 }
