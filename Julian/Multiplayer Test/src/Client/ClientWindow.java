@@ -2,6 +2,7 @@ package Client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+
 
 public class ClientWindow extends JFrame implements ActionListener, KeyListener
 {
@@ -58,7 +61,8 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	public ClientWindow(String server, int tcpPort) throws HeadlessException
 	{
 		super();
-		while(checkname() == false);		
+		//while(checkname() == false);	
+		checkname();
 		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.server = server;
 		this.port = tcpPort;
@@ -119,7 +123,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 				isAdmin = true;
 				start_btn = new JButton("Start");
 				start_btn.addActionListener(this);
-				start_btn.setEnabled(false);
+			//	start_btn.setEnabled(false);
 				add(start_btn, BorderLayout.SOUTH);
 			}
 			else if(posstring.equals("-1")) //Game already full
@@ -152,7 +156,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 		}
 		playerlistModel.addElement(name);
 
-	}
+	}	
 	public void displayMessage(String message, String sender)
 	{
 		chat.append(sender + ": " + message + "\n");
@@ -161,7 +165,21 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Throwable a) {
+			a.printStackTrace();
+		}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UIWindow window = new UIWindow();
+					window.frmFoodimperium.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 
