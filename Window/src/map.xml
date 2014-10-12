@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bezirk id="0" name="Bezirk1" einwohner="100" maxFilialen="5" boni="Döner">
+		<filiale>
+			<typ>1</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+		<filiale>
+			<typ>1</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+		<filiale>
+			<typ>1</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+		<filiale>
+			<typ>1</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+		<filiale>
+			<typ>1</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+	</bezirk>
+	<bezirk id="1" name="Bezirk2" einwohner="100" maxFilialen="4"  boni="Döner">
+		<filiale>
+			<typ>2</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+		<filiale>
+			<typ>2</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+		<filiale>
+			<typ>2</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+		<filiale>
+			<typ>2</typ>
+			<kaufpreis>100000</kaufpreis>
+		</filiale>
+	</bezirk>
+</map>
