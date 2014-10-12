@@ -2,42 +2,70 @@
 <map>
 	<bezirk id="0" name="Bezirk1" einwohner="100" maxFilialen="5" boni="Döner">
 		<filiale>
+		    <name>Göthestraße</name>
 			<typ>1</typ>
 			<kaufpreis>100000</kaufpreis>
+			
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			<typ>1</typ>
+			<kaufpreis>120000</kaufpreis>
+			<name>Schloßallee</name>
+			<posX>235</posX>
+			<posY>126</posY>
 		</filiale>
 		<filiale>
 			<typ>1</typ>
 			<kaufpreis>100000</kaufpreis>
+			<name>Lessingstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
 		</filiale>
 		<filiale>
 			<typ>1</typ>
 			<kaufpreis>100000</kaufpreis>
+			<name>Badstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
 		</filiale>
 		<filiale>
 			<typ>1</typ>
 			<kaufpreis>100000</kaufpreis>
-		</filiale>
-		<filiale>
-			<typ>1</typ>
-			<kaufpreis>100000</kaufpreis>
+			<name>Bahnhofstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
 		</filiale>
 	</bezirk>
 	<bezirk id="1" name="Bezirk2" einwohner="100" maxFilialen="4"  boni="Döner">
 		<filiale>
 			<typ>2</typ>
 			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
 		</filiale>
 		<filiale>
 			<typ>2</typ>
 			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
 		</filiale>
 		<filiale>
 			<typ>2</typ>
 			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
 		</filiale>
 		<filiale>
 			<typ>2</typ>
 			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>			
 		</filiale>
 	</bezirk>
 </map>

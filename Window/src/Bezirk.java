@@ -4,7 +4,7 @@ public class Bezirk
 	String name;
 	int einwohner;
 	int maxFilialen;
-	String boni;
+	String boni;	
 
 	public Bezirk(int id, String name, int einwohner, int maxFilialen, String boni)
 	{
