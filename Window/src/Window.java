@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.GroupLayout;
@@ -12,20 +13,38 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLayeredPane;
+
 import java.awt.FlowLayout;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
+
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JTextPane;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
   
 public class Window {
@@ -36,6 +55,8 @@ public class Window {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	
+	JLabel tmp_pane = new JLabel("pos");//////////////////////////
 
 	/**
 	 * Launch the application.
@@ -61,8 +82,89 @@ public class Window {
 	/**
 	 * Create the application.
 	 */
-	public Window() {
-		initialize();
+	public Window()
+	{
+		initialize();		
+	}
+
+	private void buildMap(JLayeredPane pane)
+	{
+		
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder;
+		try
+		{
+			builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new File("src/map.xml"));
+			Element map = document.getDocumentElement();
+			NodeList filiale = map.getElementsByTagName("filiale");
+			NodeList bezirk = map.getElementsByTagName("bezirk");
+			JLabel[] bezirk_lbl = new JLabel[8]; 
+			Bezirk[] bezirke = new Bezirk[8];
+			Rectangle[] bezirk_pos = {new Rectangle(180,93,148,107),new Rectangle(102,237,175,130),new Rectangle(0,0,0,0),new Rectangle(0,0,0,0),
+										new Rectangle(0,0,0,0),new Rectangle(0,0,0,0),new Rectangle(0,0,0,0),new Rectangle(0,0,0,0)};
+			for (int i = 0; i < bezirk.getLength(); i++)
+			{
+				System.out.println("Neuer Bezirk"
+						+ bezirk.item(i).getAttributes().getNamedItem("name")
+								.getNodeValue());
+				bezirke[i] = new Bezirk(
+								Integer.parseInt(bezirk.item(i).getAttributes()
+								.getNamedItem("id").getNodeValue()), bezirk.item(i)
+								.getAttributes().getNamedItem("name")
+								.getNodeValue(), Integer.parseInt(bezirk.item(i)
+								.getAttributes().getNamedItem("einwohner")
+								.getNodeValue()), Integer.parseInt(bezirk.item(i)
+								.getAttributes().getNamedItem("maxFilialen")
+								.getNodeValue()), bezirk.item(i).getAttributes()
+								.getNamedItem("boni").getNodeValue());
+				
+				bezirk_lbl[i] = new JLabel("");			
+				//bezirk_lbl[i].setBackground(Color.white); //zum Testen
+				//bezirk_lbl[i].setOpaque(true);
+				bezirk_lbl[i].setToolTipText(bezirke[i].toHTML());
+				bezirk_lbl[i].setBounds(bezirk_pos[i]);
+				pane.add(bezirk_lbl[i]);
+				System.out.println(bezirk_lbl[i].getHeight());
+			}
+		} catch (ParserConfigurationException e)
+		{
+			e.printStackTrace();
+		} catch (SAXException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//temporary test code
+				
+					tmp_pane.setBounds(0,550,150,30);
+					tmp_pane.setBackground(Color.LIGHT_GRAY);
+					tmp_pane.setOpaque(true);
+					pane.add(tmp_pane);
+					
+					pane.addMouseMotionListener(new MouseMotionListener()
+					{
+						
+						@Override
+						public void mouseMoved(MouseEvent e)
+						{
+							tmp_pane.setText(e.getPoint().toString());
+							
+						}
+						
+						@Override
+						public void mouseDragged(MouseEvent e)
+						{						
+							
+						}
+					});
+				//
+		
+		
 	}
 
 	/**
@@ -153,9 +255,11 @@ public class Window {
 		JLayeredPane layeredPane_21 = new JLayeredPane();
 		tabbedPane_2.addTab("Immobilien", null, layeredPane_21, null);
 		
+		
 		JLayeredPane layeredPane_11 = new JLayeredPane();
 		tabbedPane_2.addTab("Map", null, layeredPane_11, null);
 		
+		buildMap(layeredPane_11); //////////////////////////////////////////////
 		JButton button = new JButton("");
 		button.setForeground(Color.LIGHT_GRAY);
 		button.setBounds(235, 126, 10, 10);
@@ -185,6 +289,8 @@ public class Window {
 		label_1.setIcon(new ImageIcon(Window.class.getResource("/Icon/BerlinKarteStrasse3.png")));
 		label_1.setBounds(0, 0, 797, 614);
 		layeredPane_11.add(label_1);
+		
+		/////////////////////////////////////////////////////////////buildMap(layeredPane_11);
 		
 		JLayeredPane layeredPane_3 = new JLayeredPane();
 		tabbedPane.addTab("Marktplatz", null, layeredPane_3, null);
