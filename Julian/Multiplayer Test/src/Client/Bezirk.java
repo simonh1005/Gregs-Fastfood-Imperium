@@ -9,7 +9,7 @@ public class Bezirk {
 	private int bID;
 	
 	public double getEinnahmen(){
-		return 1.54;
+		return 1.56;
 	}
 	
 	public VerbrauchT getVerbrauch(int maxZutaten){
