@@ -33,7 +33,7 @@ public class SpielLogik {
 	}
 	
 	public int mitarbeiterzahlVeraendern(int menge){
-		return 1;
+		return 2;
 	}
 	
 	public void einkaufen(int menge, int qualitaet, int zutat){
