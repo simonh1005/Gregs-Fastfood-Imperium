@@ -103,8 +103,8 @@ public class Window {
 			JLabel[] bezirk_lbl = new JLabel[8]; 
 			Bezirk[] bezirke = new Bezirk[8];
 			Filiale[] filialen = new Filiale[40];
-			Rectangle[] bezirk_pos = {new Rectangle(180,93,148,107),new Rectangle(102,237,175,130),new Rectangle(0,0,0,0),new Rectangle(0,0,0,0),
-										new Rectangle(0,0,0,0),new Rectangle(0,0,0,0),new Rectangle(0,0,0,0),new Rectangle(0,0,0,0)};
+			Rectangle[] bezirk_pos = {new Rectangle(180,93,148,107),new Rectangle(102,237,175,130),new Rectangle(371,80,98,120),new Rectangle(316,254,108,66),
+										new Rectangle(145,381,176,100),new Rectangle(346,356,165,132),new Rectangle(490,157,122,205),new Rectangle(523,380,238,140)};
 			int z = 0;
 			for (int i = 0; i < bezirk_node.getLength(); i++)
 			{
@@ -122,8 +122,8 @@ public class Window {
 								.getNamedItem("boni").getNodeValue());
 				
 				bezirk_lbl[i] = new JLabel("");			
-				bezirk_lbl[i].setBackground(Color.white); //zum Testen
-				bezirk_lbl[i].setOpaque(true);
+//				bezirk_lbl[i].setBackground(Color.white); //zum Testen
+//				bezirk_lbl[i].setOpaque(true);
 				bezirk_lbl[i].setToolTipText(bezirke[i].toHTML());
 				bezirk_lbl[i].setBounds(bezirk_pos[i]);
 				pane.add(bezirk_lbl[i]);		
@@ -159,7 +159,7 @@ public class Window {
 						@Override
 						public void mouseMoved(MouseEvent e)
 						{
-							tmp_pane.setText(e.getPoint().toString());
+							tmp_pane.setText("("+e.getPoint().x + ": " + e.getPoint().y + " )");
 							
 						}
 						
