@@ -22,7 +22,7 @@
 		<filiale>
 			
 			<kaufpreis>100000</kaufpreis>
-			<name>Badstraße</name>
+			<name>Badstraße2</name>
 			<posX>221</posX>
 			<posY>202</posY>
 		</filiale>
@@ -215,33 +215,29 @@
 		</filiale>
 	</bezirk>
 	<bezirk id="1" name="Bezirk8" einwohner="100" maxFilialen="4"  boni="Döner">
-		<filiale>
-			
+		<filiale>			
 			<kaufpreis>100000</kaufpreis>
 			<name>Rathausplatz</name>
 			<posX>235</posX>
 			<posY>126</posY>
 		</filiale>
-		<filiale>
-			
+		<filiale>			
 			<kaufpreis>100000</kaufpreis>
 			<name>Opernstraße</name>
 			<posX>235</posX>
 			<posY>126</posY>
 		</filiale>
-		<filiale>
-			
+		<filiale>			
 			<kaufpreis>100000</kaufpreis>
 			<name>Theaterplatz</name>
 			<posX>235</posX>
 			<posY>126</posY>
 		</filiale>
-		<filiale>
-			
+		<filiale>			
 			<kaufpreis>100000</kaufpreis>
-			<name>Parkstraße</name>
-			<posX>235</posX>
-			<posY>126</posY>			
+			<name>Die Letzte</name>
+			<posX>529</posX>
+			<posY>379</posY>			
 		</filiale>
 	</bezirk>
 </map>

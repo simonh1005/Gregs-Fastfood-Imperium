@@ -126,22 +126,24 @@ public class Window {
 //				bezirk_lbl[i].setOpaque(true);
 				bezirk_lbl[i].setToolTipText(bezirke[i].toHTML());
 				bezirk_lbl[i].setBounds(bezirk_pos[i]);
-				pane.add(bezirk_lbl[i]);		
+					
 				for (int j = 0; j < anzFil; j++)
 				{
-					Element f = (Element) filiale_node.item(j);
+					Element f = (Element) filiale_node.item(z);
 					Rectangle pos = new Rectangle(Integer.parseInt(getDirectChildValue(f, "posX")),Integer.parseInt(getDirectChildValue(f, "posY")),10,10);
-					filialen[z] = new Filiale(10*i+j, getDirectChildValue(f, "name"),Integer.parseInt(getDirectChildValue(f, "typ")),
-							Integer.parseInt(getDirectChildValue(f, "kaufpreis")));
-					z++;
+					filialen[z] = new Filiale(10*i+j, getDirectChildValue(f, "name"),Integer.parseInt(getDirectChildValue(f, "kaufpreis")));					
 					JButton btn = new JButton();
 					btn.setForeground(Color.LIGHT_GRAY);
 					btn.setBounds(pos);
 					btn.setName("fil_btn" + 10*i+j);
-					btn.addActionListener(new FilialListener(filialen[z]));
+					btn.addActionListener(new FilialListener(filialen[z],pane));
+					z++;
 					pane.add(btn);
 				}
-			}			
+				pane.add(bezirk_lbl[i]);	
+				System.out.println("  AnzFilialen: " + anzFil);
+			}		
+			System.out.println("AnzFilialen gesamt: " + z);
 		} catch (ParserConfigurationException|SAXException|IOException e)
 		{
 			e.printStackTrace();
@@ -272,30 +274,7 @@ public class Window {
 		
 		JLayeredPane layeredPane_11 = new JLayeredPane();
 		tabbedPane_2.addTab("Map", null, layeredPane_11, null);
-		
-		
-		JButton button = new JButton("");
-		button.setForeground(Color.LIGHT_GRAY);
-		button.setBounds(235, 126, 10, 10);
-		layeredPane_11.add(button);
-		
-				
-		JButton button_2 = new JButton("");
-		button_2.setBounds(308, 188, 10, 10);
-		layeredPane_11.add(button_2);
-		
-		JButton button_3 = new JButton("");
-		button_3.setBounds(221, 202, 10, 10);
-		layeredPane_11.add(button_3);
-		
-		JButton button_4 = new JButton("");
-		button_4.setBounds(203, 161, 10, 10);
-		layeredPane_11.add(button_4);
-		
-		JButton button_5 = new JButton("");
-		button_5.setBounds(261, 78, 10, 10);
-		layeredPane_11.add(button_5);
-		
+
 				
 		buildMap(layeredPane_11); //////////////////////////////////////////////
 		
