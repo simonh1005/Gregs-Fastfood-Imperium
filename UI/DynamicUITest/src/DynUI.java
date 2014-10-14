@@ -61,6 +61,7 @@ public class DynUI extends JFrame implements ActionListener
 		NodeList filiale = map.getElementsByTagName("filiale");
 		NodeList bezirk = map.getElementsByTagName("bezirk");
 
+		
 		for (int i = 0; i < bezirk.getLength(); i++)
 		{
 			System.out.println("Neuer Bezirk"
@@ -77,21 +78,18 @@ public class DynUI extends JFrame implements ActionListener
 							.getNodeValue()), bezirk.item(i).getAttributes()
 							.getNamedItem("boni").getNodeValue());
 			
-			bezirk_lbl[i] = new JLabel("       ");			
+			bezirk_lbl[i] = new JLabel("");			
 			bezirk_lbl[i].setBackground(Color.white); //zum Testen
 			bezirk_lbl[i].setOpaque(true);
-//			bezirk_lbl[i].addMouseListener(new LabelAdapter());
 			bezirk_lbl[i].setToolTipText(bezirke[i].toHTML());
 			add(bezirk_lbl[i]);
 			System.out.println(bezirk_lbl[i].getBackground());
-		}
-		
-		
+		}		
 	
 		for (int i = 0; i < filiale.getLength(); i++)
-		{
-
+		{			
 			System.out.println("Neue Filiale:" + i);
+			
 
 		}
 			
