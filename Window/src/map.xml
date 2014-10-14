@@ -64,4 +64,184 @@
 			<posY>126</posY>			
 		</filiale>
 	</bezirk>
+	<bezirk id="1" name="Bezirk3" einwohner="100" maxFilialen="4"  boni="Döner">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="1" name="Bezirk4" einwohner="100" maxFilialen="4"  boni="Döner">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="1" name="Bezirk5" einwohner="100" maxFilialen="4"  boni="Döner">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="1" name="Bezirk6" einwohner="100" maxFilialen="4"  boni="Döner">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="1" name="Bezirk7" einwohner="100" maxFilialen="4"  boni="Döner">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="1" name="Bezirk8" einwohner="100" maxFilialen="4"  boni="Döner">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>235</posX>
+			<posY>126</posY>			
+		</filiale>
+	</bezirk>
 </map>
