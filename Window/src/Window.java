@@ -480,31 +480,6 @@ public class Window {
 		
 		buildMap(layeredPane_11); //////////////////////////////////////////////
 		
-		JButton button = new JButton("");
-		button.setForeground(Color.LIGHT_GRAY);
-		button.setBounds(235, 126, 10, 10);
-		layeredPane_11.add(button);
-		
-		JButton button_1 = new JButton("");
-		button_1.setBounds(317, 114, 10, 10);
-		layeredPane_11.add(button_1);
-		
-		JButton button_2 = new JButton("");
-		button_2.setBounds(308, 188, 10, 10);
-		layeredPane_11.add(button_2);
-		
-		JButton button_3 = new JButton("");
-		button_3.setBounds(221, 202, 10, 10);
-		layeredPane_11.add(button_3);
-		
-		JButton button_4 = new JButton("");
-		button_4.setBounds(203, 161, 10, 10);
-		layeredPane_11.add(button_4);
-		
-		JButton button_5 = new JButton("");
-		button_5.setBounds(261, 78, 10, 10);
-		layeredPane_11.add(button_5);
-		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(Window.class.getResource("/Icon/BerlinKarteStrasse3.png")));
 		label_1.setBounds(0, 0, 797, 614);
