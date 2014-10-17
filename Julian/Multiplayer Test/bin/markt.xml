@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<markt>
+    <preis>
+        <name>ZutatA</name>
+        <qualitaet1>10.0</qualitaet1>
+        <qualitaet2>12.0</qualitaet1>
+        <qualitaet3>15.0</qualitaet1>
+    </preis>
+    <preis>
+        <name>ZutatB</name>
+        <qualitaet1>10.0</qualitaet1>
+        <qualitaet2>12.0</qualitaet1>
+        <qualitaet3>15.0</qualitaet1>
+    </preis>
+    <preis>
+        <name>ZutatC</name>
+        <qualitaet1>10.0</qualitaet1>
+        <qualitaet2>12.0</qualitaet1>
+        <qualitaet3>15.0</qualitaet1>
+    </preis>
+    <preis>
+        <name>ZutatD</name>
+        <qualitaet1>10.0</qualitaet1>
+        <qualitaet2>12.0</qualitaet1>
+        <qualitaet3>15.0</qualitaet1>
+    </preis>
+</markt>

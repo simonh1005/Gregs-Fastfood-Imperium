@@ -8,6 +8,9 @@ public class Filiale
 	String name;
 	int typ;
 	int kaufpreis;
+	int qualitaet;
+	double verkaufsPreis;
+
 
 	public Filiale(int id, String name, int kaufpreis)
 	{
