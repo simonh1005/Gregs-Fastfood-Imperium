@@ -52,6 +52,11 @@ public class ClientHandler extends Thread
 					sender.sendToAll(m, client, name, false);
 					break;
 				}
+				case "<start": //Chat Message for this Player; in ms[1], the sender is saved
+				{					
+					sender.startGame();
+					break;
+				}
 				default:
 					break;
 				}
@@ -65,6 +70,11 @@ public class ClientHandler extends Thread
 		{
 			System.out.println("Client disconnected");
 		}
+	}
+
+	public String getPlayerName()
+	{
+		return name;
 	}
 
 }

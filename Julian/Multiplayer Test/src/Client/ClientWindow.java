@@ -26,7 +26,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-
 public class ClientWindow extends JFrame implements ActionListener, KeyListener
 {
 	static String server = "localhost";
@@ -53,15 +52,17 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	public ClientWindow() throws HeadlessException
 	{
 		super();
-		while(checkname() == false);
+		while (checkname() == false)
+			;
 		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		buildUI();
 
 	}
+
 	public ClientWindow(String server, int tcpPort) throws HeadlessException
 	{
 		super();
-		//while(checkname() == false);	
+		// while(checkname() == false);
 		checkname();
 		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.server = server;
@@ -69,15 +70,17 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 		buildUI();
 
 	}
+
 	private boolean checkname()
 	{
-		String[] forbiddenChars = { ";",",", ".", "/","<",">","}","{" };
-		username = JOptionPane.showInputDialog("Bitte geben Sie ihren Namen ein (Mind. 3 Stellen; Keine Sonderzeichen)");	
-		if(username.length() < 3 || username.length() >30)
+		String[] forbiddenChars = { ";", ",", ".", "/", "<", ">", "}", "{" };
+		username = JOptionPane
+				.showInputDialog("Bitte geben Sie ihren Namen ein (Mind. 3 Stellen; Keine Sonderzeichen)");
+		if (username.length() < 3 || username.length() > 30)
 		{
 			return false;
 		}
-		for (String s:forbiddenChars)
+		for (String s : forbiddenChars)
 		{
 			if (username.contains(s))
 			{
@@ -95,7 +98,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 			dispose();
 		}
 		this.setTitle(username);
-		
+
 		playerBox.setBackground(Color.gray);
 		playerlistModel.addElement(username);
 		content_panel.add(playerBox, BorderLayout.NORTH);
@@ -104,8 +107,7 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 		content_panel.add(chat, BorderLayout.CENTER);
 		content_panel.add(chat_tb, BorderLayout.SOUTH);
 		add(content_panel, BorderLayout.CENTER);
-		
-		
+
 		connectToServer();
 	}
 
@@ -123,13 +125,13 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 				isAdmin = true;
 				start_btn = new JButton("Start");
 				start_btn.addActionListener(this);
-			//	start_btn.setEnabled(false);
+				// start_btn.setEnabled(false);
 				add(start_btn, BorderLayout.SOUTH);
-			}
-			else if(posstring.equals("-1")) //Game already full
+			} else if (posstring.equals("-1")) // Game already full
 			{
-				JOptionPane.showMessageDialog(this,
-						"Die maximale Anzahl an spielern ist bereits erreicht \n Programm wird beendet");
+				JOptionPane
+						.showMessageDialog(this,
+								"Die maximale Anzahl an spielern ist bereits erreicht \n Programm wird beendet");
 				dispose();
 			}
 			MessageReceiver mr = new MessageReceiver(s, this);
@@ -138,13 +140,15 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 
 		} catch (UnknownHostException e)
 		{
-			JOptionPane.showMessageDialog(this, "Ein unbekannter fehler ist aufgetreten! \n Programm wird beendet");
+			JOptionPane
+					.showMessageDialog(this,
+							"Ein unbekannter fehler ist aufgetreten! \n Programm wird beendet");
 		} catch (IOException e)
 		{
 			JOptionPane.showMessageDialog(this,
 					"Server wurde nicht gefunden! \n Programm wird beendet");
 			System.exit(-1);
-			
+
 		}
 	}
 
@@ -156,7 +160,8 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 		}
 		playerlistModel.addElement(name);
 
-	}	
+	}
+
 	public void displayMessage(String message, String sender)
 	{
 		chat.append(sender + ": " + message + "\n");
@@ -165,29 +170,36 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		try {
+		try
+		{
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Throwable a) {
+		} catch (Throwable a)
+		{
 			a.printStackTrace();
 		}
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+		EventQueue.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				try
+				{
 					UIWindow window = new UIWindow();
 					window.frmFoodimperium.setVisible(true);
-				} catch (Exception e) {
+					out.print("<start>");
+				} catch (Exception e)
+				{
 					e.printStackTrace();
 				}
 			}
 		});
-		
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent key)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -195,21 +207,21 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 	{
 		if (key.getKeyCode() == KeyEvent.VK_ENTER)
 		{
-			writeMsg(chat_tb.getText());			
+			writeMsg(chat_tb.getText());
 			displayMessage(chat_tb.getText(), "Du");
 			chat_tb.setText("");
 		}
-		
+
 	}
 
 	private void writeMsg(String message)
 	{
-			out.println("<msg>" + username + ">" + message);	
+		out.println("<msg>" + username + ">" + message);
 	}
 
 	@Override
 	public void keyTyped(KeyEvent key)
 	{
-				
+
 	}
 }

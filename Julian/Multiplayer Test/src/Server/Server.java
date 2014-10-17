@@ -9,7 +9,7 @@ import java.net.Socket;
 
 import javax.swing.JTextArea;
 
-public class Server
+public class Server extends Thread
 {
 	public static final int port = 99;
 	public static final int udpPort = 666;
@@ -19,11 +19,12 @@ public class Server
 	private static Server instance;
 	Sender sender;
 
-	private void startServer()
+	
+	@Override
+	public void run()
 	{
-
+		acceptNewClients();
 	}
-
 	private void acceptNewClients()
 	{
 		connectClient(); // Wait for the first client, he started the server and
@@ -63,7 +64,7 @@ public class Server
 		{
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private void connectClient()
@@ -76,13 +77,15 @@ public class Server
 		{
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private Server() throws IOException
 	{
 		serverSock = new ServerSocket(port);
+		sender = new Sender();
 	}
+
 	private void answer(InetAddress a, int port) throws IOException
 	{ // Sends the Port of the TCP socket vis the UDP socket
 		int serverPort = serverSock.getLocalPort();
@@ -95,16 +98,17 @@ public class Server
 	private void exitServer()
 	{
 		// Send Message to clients, so they can also close themselves
-		sender.sendToAll("<exit>server","server");
+		sender.sendToAll("<exit>server", "server");
 		try
 		{
 			Thread.sleep(300);
 		} catch (InterruptedException e)
-		{			
+		{
 		}
 		System.exit(0);
-		
+
 	}
+
 	public static void newServer()
 	{
 		if (instance == null)
@@ -112,11 +116,12 @@ public class Server
 			try
 			{
 				instance = new Server();
+				instance.start();
 			} catch (IOException e)
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		}
-	}
+			}			
+		}	
+	}	
 }

@@ -1,4 +1,6 @@
 package Client;
+
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,7 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLayeredPane;
+
 import java.awt.FlowLayout;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -21,12 +25,28 @@ import javax.swing.JToggleButton;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
+
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JTextPane;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 
 public class UIWindow {
@@ -40,7 +60,7 @@ public class UIWindow {
 
 	/**
 	 * Launch the application.
-	 */
+	
 //	public static void main(String[] args) {
 //		try {
 //			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -62,10 +82,80 @@ public class UIWindow {
 	/**
 	 * Create the application.
 	 */
+	
 	public UIWindow() {
 		initialize();
 	}
-
+	private void buildMap(JLayeredPane pane)
+	{
+		
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder;
+		try
+		{
+			builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new File("src/map.xml"));
+			Element map = document.getDocumentElement();
+			NodeList filiale_node = map.getElementsByTagName("filiale");
+			NodeList bezirk_node = map.getElementsByTagName("bezirk");
+			JLabel[] bezirk_lbl = new JLabel[8]; 
+			Bezirk[] bezirke = new Bezirk[8];
+			Filiale[] filialen = new Filiale[42];
+			Rectangle[] bezirk_pos = {new Rectangle(180,93,148,107),new Rectangle(102,237,175,130),new Rectangle(371,80,98,120),new Rectangle(316,254,108,66),
+										new Rectangle(145,381,176,100),new Rectangle(346,356,165,132),new Rectangle(490,157,122,205),new Rectangle(523,380,238,140)};
+			int z = 0;
+			for (int i = 0; i < bezirk_node.getLength(); i++)
+			{
+				System.out.println("Neuer Bezirk"
+						+ bezirk_node.item(i).getAttributes().getNamedItem("name")
+								.getNodeValue());
+				int anzFil = Integer.parseInt(bezirk_node.item(i).getAttributes().getNamedItem("maxFilialen").getNodeValue());
+//				bezirke[i] = new Bezirk(
+//								Integer.parseInt(bezirk_node.item(i).getAttributes()
+//								.getNamedItem("id").getNodeValue()), bezirk_node.item(i)
+//								.getAttributes().getNamedItem("name")
+//								.getNodeValue(), Integer.parseInt(bezirk_node.item(i)
+//								.getAttributes().getNamedItem("einwohner")
+//								.getNodeValue()), anzFil, bezirk_node.item(i).getAttributes()
+//								.getNamedItem("boni").getNodeValue());
+				
+				bezirk_lbl[i] = new JLabel("");			
+//				bezirk_lbl[i].setBackground(Color.white); //zum Testen
+//				bezirk_lbl[i].setOpaque(true);
+//				bezirk_lbl[i].setToolTipText(bezirke[i].toHTML());
+				bezirk_lbl[i].setBounds(bezirk_pos[i]);
+					
+				for (int j = 0; j < anzFil; j++)
+				{
+					Element f = (Element) filiale_node.item(z);
+					Rectangle pos = new Rectangle(Integer.parseInt(getDirectChildValue(f, "posX")),Integer.parseInt(getDirectChildValue(f, "posY")),10,10);
+//					filialen[z] = new Filiale(10*i+j, getDirectChildValue(f, "name"),Integer.parseInt(getDirectChildValue(f, "kaufpreis")));					
+					JButton btn = new JButton();
+					btn.setForeground(Color.LIGHT_GRAY);
+					btn.setBounds(pos);
+					btn.setName("fil_btn" + 10*i+j);
+//					btn.addActionListener(new FilialListener(filialen[z],pane));
+					z++;
+					pane.add(btn);
+				}
+				pane.add(bezirk_lbl[i]);	
+				System.out.println("  AnzFilialen: " + anzFil);
+			}		
+			System.out.println("AnzFilialen gesamt: " + z);
+		} catch (ParserConfigurationException|SAXException|IOException e)
+		{
+			e.printStackTrace();
+		}		
+		
+	}
+	public static String getDirectChildValue(Element parent, String name)
+	{
+	    for(Node child = parent.getFirstChild(); child != null; child = child.getNextSibling())
+	    {
+	        if(child instanceof Element && name.equals(child.getNodeName())) return child.getTextContent();
+	    }
+	    return "";
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -85,7 +175,8 @@ public class UIWindow {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(UIWindow.class.getResource("/Icon/Finance-Money-icon.png")));
+//		lblNewLabel.setIcon(new ImageIcon(UIWindow.class.getResource("/Icon/Finance-Money-icon.png")));	
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(UIWindow.class.getResource("/Icon/Time-And-Date-Clock-icon.png")));
@@ -160,29 +251,9 @@ public class UIWindow {
 		JButton button = new JButton("");
 		button.setForeground(Color.RED);
 		button.setBounds(235, 126, 10, 10);
-		layeredPane_11.add(button);
+		layeredPane_11.add(button);	
 		
-		JButton button_1 = new JButton("");
-		button_1.setForeground(Color.GREEN);
-		button_1.setBounds(317, 114, 10, 10);
-		layeredPane_11.add(button_1);
-		
-		JButton button_2 = new JButton("");
-		button_2.setBounds(308, 188, 10, 10);
-		layeredPane_11.add(button_2);
-		
-		JButton button_3 = new JButton("");
-		button_3.setBounds(221, 202, 10, 10);
-		layeredPane_11.add(button_3);
-		
-		JButton button_4 = new JButton("");
-		button_4.setBounds(203, 161, 10, 10);
-		layeredPane_11.add(button_4);
-		
-		JButton button_5 = new JButton("");
-		button_5.setBounds(261, 78, 10, 10);
-		layeredPane_11.add(button_5);
-		
+		buildMap(layeredPane_11);
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(UIWindow.class.getResource("/Icon/BerlinKarteStrasse3.png")));
 		label_1.setBounds(0, 0, 797, 614);
