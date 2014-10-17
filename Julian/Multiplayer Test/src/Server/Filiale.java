@@ -22,6 +22,7 @@ public class Filiale
 		this.fID = id;
 		this.name = name;
 		this.kaufPreis = kaufpreis;
+		
 	}
 
 	public int getTyp()
