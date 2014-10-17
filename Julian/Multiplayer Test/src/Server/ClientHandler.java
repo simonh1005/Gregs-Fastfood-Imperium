@@ -11,15 +11,13 @@ public class ClientHandler extends Thread
 {
 	Socket client;
 	Sender sender;
-	ServerWin parent;
 	String inputMessage = "";
 	String name;
 
-	public ClientHandler(Socket s, Sender sender, ServerWin parent)
+	public ClientHandler(Socket s, Sender sender)
 	{
 		client = s;
-		this.sender = sender;
-		this.parent = parent;		
+		this.sender = sender;			
 	}
 
 	@Override
@@ -34,7 +32,7 @@ public class ClientHandler extends Thread
 					client.getInputStream()));
 
 			name = rein.readLine();			
-			parent.log("Neuer Spieler verbunden: " + name);
+			System.out.println("Neuer Spieler verbunden: " + name);
 			sender.sendToAll("<newPlayer>" +name, client, name, false);
 			sender.sendToAll("<msg>" +name +">Joined the room", client, name, false); //<msg><sender_name>text
 		
@@ -50,7 +48,7 @@ public class ClientHandler extends Thread
 				{				
 				case "<msg": //Chat Message for this Player; in ms[1], the sender is saved
 				{					
-					parent.log(ms[1] + ":" + ms[2]);
+					System.out.println(ms[1] + ":" + ms[2]);
 					sender.sendToAll(m, client, name, false);
 					break;
 				}

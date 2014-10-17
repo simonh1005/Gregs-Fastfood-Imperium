@@ -40,7 +40,7 @@ public class ServerWin extends JFrame
 	private ServerWin()
 	{
 		super("Game Lobby");
-		sender = new Sender(this);
+		sender = new Sender();
 		display.setEditable(false);
 		add(display, BorderLayout.CENTER);
 		this.setBounds(500, 500, 500, 500);

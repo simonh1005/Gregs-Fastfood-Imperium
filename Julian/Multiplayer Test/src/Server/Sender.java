@@ -9,15 +9,10 @@ public class Sender extends Thread
 	public static final int MAX_PLAYERS = 4;
 	Socket[] player = new Socket[MAX_PLAYERS];
 	private ClientHandler[] handler = new ClientHandler[MAX_PLAYERS];
-	private int number_of_player = 0;
-	private ServerWin parent;
+	private int number_of_player = 0;	
 
 	// private String message;
-
-	public Sender(ServerWin parent)
-	{
-		this.parent = parent;
-	}
+	
 	public void addPlayer(Socket client)
 	{
 		if (number_of_player < MAX_PLAYERS)
@@ -32,13 +27,13 @@ public class Sender extends Thread
 			}
 			player[number_of_player] = client;	
 			
-			handler[number_of_player] = new ClientHandler(client, this, parent);
+			handler[number_of_player] = new ClientHandler(client, this);
 			handler[number_of_player].start();
 			number_of_player++;
 		} else
 		{
 			sendToPlayer(client, "-1");
-			parent.log("Maximale Anzahl von Spielern erreicht");
+			System.out.println("Maximale anzahl an Spielern bereits erreicht");
 		}
 	}
 
