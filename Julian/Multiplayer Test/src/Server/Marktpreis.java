@@ -4,11 +4,11 @@ import Server.VerbrauchT;
 
 public class Marktpreis
 {
-	private int id;
+	private static int id;
 	private String name;
-	private double qualitaet1;
-	private double qualitaet2;
-	private double qualitaet3;
+	private static double qualitaet1;
+	private static double qualitaet2;
+	private static double qualitaet3;
 	private static VerbrauchT verbrauchAlt;
 	private static VerbrauchT verbrauchAkt;
 	private static Marktpreis[] preise = new Marktpreis[4];
@@ -56,7 +56,7 @@ public class Marktpreis
 	{
 		return preise[id];
 	}
-	public void einkaufen(int menge, int qualitaet) // Verbrauch erhöht sich in
+	public static void einkaufen(int menge, int qualitaet) // Verbrauch erhöht sich in
 													// Echtzeit; auswirkungen
 													// durch Neuberechnung erst
 													// am Rundenende
@@ -68,7 +68,7 @@ public class Marktpreis
 		verbrauchAlt.sum(tmp);
 	}
 
-	public double[] getPreise() // Werden am Rundenende an die Clients
+	public static double[] getPreise() // Werden am Rundenende an die Clients
 								// weitergereicht
 	{
 		return new double[] { qualitaet1, qualitaet2, qualitaet3 };
