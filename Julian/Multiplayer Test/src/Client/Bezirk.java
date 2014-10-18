@@ -6,7 +6,7 @@ public class Bezirk {
 	private int[] boni = new int[3];
 	private int freieKundschaft;
 	private int maxAnzFilialen;
-	private int bID;
+	private static int bID;
 	
 	public double getEinnahmen(int fid){
 		
@@ -19,11 +19,11 @@ public class Bezirk {
 	}
 	
 	public void setAbsaetze(int absatz){
-		
+		Filiale.setAbsatz(absatz);
 	}
 	
 	public void filialeEroeffnen(int filialnummer){
-		
+		// noch zu implementieren
 	}
 	
 	public void setFilialAttribute(int fid, int mitarbeiter, double produktPreis, int groeﬂe, int qualitaet){
@@ -89,7 +89,7 @@ public class Bezirk {
 		this.maxAnzFilialen = maxAnzFilialen;
 	}
 
-	public int getbID() {
+	public static int getbID() {
 		return bID;
 	}
 

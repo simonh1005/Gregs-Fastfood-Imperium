@@ -14,7 +14,8 @@ public class Filiale {
 	private static int qualitaet;
 	private double kaufPreis;
 	private double verkaufsPreis;
-	private static int freieMitarbeiter = Spieler.getfreieMitarbeiter(); 
+	private static int freieMitarbeiter = Spieler.getfreieMitarbeiter();
+	private static double betriebsKostenF;
 	
 	public Filiale(int fID, int typ, int bezirk, int mitarbeiter, int produktPreis, String besitzer, int absatz, int groeﬂe, int qualitaet, int verkaufsPreis){
 		this.fID = fID;
@@ -322,8 +323,8 @@ public class Filiale {
 		return absatz;
 	}
 
-	public void setAbsatz(int absatz) {
-		this.absatz = absatz;
+	public static void setAbsatz(int absatz2) {
+		absatz = absatz2;
 	}
 
 	public static int getFid() {
@@ -356,6 +357,40 @@ public class Filiale {
 		qualitaet = qualitaet2;
 		
 	}
+
+
+	public static double getBetriebsKostenF() {
+		return betriebsKostenF;
+	}
+
+
+	public static void setBetriebsKostenF(double betriebsKostenF) {
+		Filiale.betriebsKostenF = betriebsKostenF;
+	}
+
+
+	public static String getBesitzer() {
+		return besitzer;
+	}
+
+
+	public static void setBesitzer(String besitzer) {
+		Filiale.besitzer = besitzer;
+	}
+
+
+	public static int getTyp() {
+		return typ;
+	}
+
+
+	public static void setTyp(int typ) {
+		Filiale.typ = typ;
+	}
+
+
+	
+	
 	
 	
 	

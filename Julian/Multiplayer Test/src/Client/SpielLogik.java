@@ -11,7 +11,7 @@ public class SpielLogik {
 		
 	}
 	
-	private void spielBeenden(){
+	public static void spielBeenden(){
 		
 	}
 	
