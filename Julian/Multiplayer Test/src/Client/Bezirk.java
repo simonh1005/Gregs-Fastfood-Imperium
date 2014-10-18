@@ -8,8 +8,9 @@ public class Bezirk {
 	private int maxAnzFilialen;
 	private int bID;
 	
-	public double getEinnahmen(){
-		return 1.56;
+	public double getEinnahmen(int fid){
+		
+		return 1.65;
 	}
 	
 	public VerbrauchT getVerbrauch(int maxZutaten){
@@ -25,7 +26,24 @@ public class Bezirk {
 		
 	}
 	
-	public void setProduktPreis(int fid){
-		
+	public void setFilialAttribute(int fid, int mitarbeiter, double produktPreis, int groeﬂe, int qualitaet){
+		Filiale.setFid(fid);
+		Filiale.setMitarbeiter(mitarbeiter);
+		Filiale.setProduktPreis(produktPreis);
+		Filiale.setGroeﬂe(groeﬂe);
+		Filiale.setQualitaet(qualitaet);
+	}
+	
+	public double verkaufen(int fid){
+		if (Filiale.getFid() == fid) {
+			Filiale.verkaufen();
+		}
+		return 1.45;
+	}
+	
+	public void setProduktPreis(int fid, double preis){
+		if (Filiale.getFid() == fid) {
+			Filiale.setProduktPreis(preis);
+		}
 	}
 }
