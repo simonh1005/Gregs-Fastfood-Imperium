@@ -15,7 +15,7 @@ public class Marktpreis {
 		getPrice(menge, qualitaet);
 	}
 	
-	public double verbrauchZuPreis(VerbrauchT verbrauch){		// ?
+	public double verbrauchZuPreis(VerbrauchT verbrauch){		// ???
 		double test = 1.45;
 		return test;
 	}

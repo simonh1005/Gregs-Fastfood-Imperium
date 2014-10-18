@@ -46,4 +46,56 @@ public class Bezirk {
 			Filiale.setProduktPreis(preis);
 		}
 	}
+
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getEinwohner() {
+		return einwohner;
+	}
+
+	public void setEinwohner(int einwohner) {
+		this.einwohner = einwohner;
+	}
+
+	public int[] getBoni() {
+		return boni;
+	}
+
+	public void setBoni(int[] boni) {
+		this.boni = boni;
+	}
+
+	public int getFreieKundschaft() {
+		return freieKundschaft;
+	}
+
+	public void setFreieKundschaft(int freieKundschaft) {
+		this.freieKundschaft = freieKundschaft;
+	}
+
+	public int getMaxAnzFilialen() {
+		return maxAnzFilialen;
+	}
+
+	public void setMaxAnzFilialen(int maxAnzFilialen) {
+		this.maxAnzFilialen = maxAnzFilialen;
+	}
+
+	public int getbID() {
+		return bID;
+	}
+
+	public void setbID(int bID) {
+		this.bID = bID;
+	}
+	
+	
 }

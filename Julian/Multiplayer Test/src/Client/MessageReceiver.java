@@ -7,6 +7,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 import javax.sound.midi.Receiver;
+import javax.swing.JOptionPane;
 
 
 public class MessageReceiver extends Thread
@@ -48,7 +49,8 @@ public class MessageReceiver extends Thread
 				{
 					if(ms[1].equals("server"))
 					{
-						ClientLogic.serverDisconnected();
+						JOptionPane.showMessageDialog(null, "Server disconnected.");
+						System.exit(0);
 					}
 				}
 				default:

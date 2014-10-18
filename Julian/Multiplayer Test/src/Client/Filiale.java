@@ -14,8 +14,7 @@ public class Filiale {
 	private static int qualitaet;
 	private double kaufPreis;
 	private double verkaufsPreis;
-	private static int freieMitarbeiter; // Muss noch irgendwo aufgebaut werden
-	
+	private static int freieMitarbeiter = Spieler.getfreieMitarbeiter(); 
 	
 	public Filiale(int fID, int typ, int bezirk, int mitarbeiter, int produktPreis, String besitzer, int absatz, int groeﬂe, int qualitaet, int verkaufsPreis){
 		this.fID = fID;
