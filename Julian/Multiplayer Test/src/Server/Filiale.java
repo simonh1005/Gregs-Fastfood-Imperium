@@ -22,12 +22,17 @@ public class Filiale
 		this.fID = id;
 		this.name = name;
 		this.kaufPreis = kaufpreis;
-		
+
 	}
 
 	public int getTyp()
 	{
 		return typ;
+	}
+
+	public String getBesitzer()
+	{
+		return besitzer;
 	}
 
 	public double getProduktPreis()
@@ -47,7 +52,7 @@ public class Filiale
 
 	public int getAbfertigungsmenge()
 	{
-		return mitarbeiter*500;
+		return mitarbeiter * 500;
 	}
 
 	private int getMaxKunden() // Maximale abfertigungsmenge,hngt
@@ -72,6 +77,16 @@ public class Filiale
 		return 1.45;
 	}
 
+	public void eroeffnen(int groeße, int typ, String besitzer)
+	{
+		this.groeße = groeße;
+		this.typ = typ;
+		this.besitzer = besitzer;
+	}
+	public int getGroeße()
+	{
+		return groeße;
+	}
 	// public VerbrauchT getMaxVerbrauch() Wird das überhaupt benötigt?
 	// {
 	// switch (typ)

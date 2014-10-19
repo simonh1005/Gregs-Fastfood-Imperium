@@ -110,15 +110,22 @@ public class Sender extends Thread
 	}
 
 	public void startGame()
-	{
+	{			
 			String[] namen = new String[number_of_player];
+			Socket[] tmp = new Socket[number_of_player];
 			for (int i = 0; i < number_of_player; i++)
 			{
 				namen[i] = handler[i].getName();
+				tmp[i] = player[i]; //Es soll kein Array der Länge 4 übergeben werde, wenn weniger als 4 Spielr existieren
+				if (i > 0)
+				{
+					sendToPlayer(player[i], "<start>");
+				}
 			}
 			try
 			{
-				Spiel s = new Spiel(player, namen);
+				
+				Spiel s = new Spiel(tmp, namen);
 			} catch (ParserConfigurationException | SAXException | IOException e)
 			{
 				// TODO Auto-generated catch block

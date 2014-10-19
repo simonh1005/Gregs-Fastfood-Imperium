@@ -183,9 +183,10 @@ public class ClientWindow extends JFrame implements ActionListener, KeyListener
 			{
 				try
 				{
+					out.println("<start>");
 					UIWindow window = new UIWindow();
 					window.frmFoodimperium.setVisible(true);
-					out.print("<start>");
+					dispose();
 				} catch (Exception e)
 				{
 					e.printStackTrace();

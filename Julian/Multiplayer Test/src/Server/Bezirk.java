@@ -35,7 +35,14 @@ public class Bezirk
 
 	public Filiale getFiliale(int fid)
 	{
+		try
+		{
 			return filialen[fid %(id*10)]; 
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+			return filialen[fid]; //Filiale 0
 	}
 	public void addNewFiliale(String name, int kaufpreis)
 	{

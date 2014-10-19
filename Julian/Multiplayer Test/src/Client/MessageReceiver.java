@@ -7,6 +7,8 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 import javax.sound.midi.Receiver;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 
 public class MessageReceiver extends Thread
@@ -30,9 +32,8 @@ public class MessageReceiver extends Thread
 			String m;
 			String[] ms = new String[3]; //tag in 1st element and parameter in the 2nd
 			while ((m = rein.readLine()) != null)
-			{
-		//		chat.getOutput().append(m +"\n");		
-				ms = m.split(">");
+			{		
+				ms = m.split(">",3);
 				
 				switch (ms[0])
 				{
@@ -43,6 +44,31 @@ public class MessageReceiver extends Thread
 				{					
 					parent.displayMessage(ms[2], ms[1]);
 					break;
+				}
+				case "<rundenEnde": //Chat Message for this Player; in ms[1], the sender is saved
+				{					
+					JOptionPane.showConfirmDialog(parent, "Rundenedme");
+					break;
+				}
+				case "<answer": //Antwort des Servers auf eine Anfrage, in ms[1] steht die Anfrage, auf dieGeantwortet wurde, in ms[2] die Antwort
+				{
+					switch (ms[1])
+					{
+					case "filpruef":
+						int fid = Integer.parseInt(ms[2].split(">")[0]);
+						String besitzer = ms[2].split(">")[1];
+						break;
+
+					default:
+						break;
+					}
+					break;
+				}
+				case "<start":
+				{
+					UIWindow window = new UIWindow();
+					window.frmFoodimperium.setVisible(true);
+					parent.dispose();
 				}
 				case "<exit":
 				{

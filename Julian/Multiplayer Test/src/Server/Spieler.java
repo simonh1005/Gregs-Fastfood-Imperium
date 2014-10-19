@@ -34,21 +34,26 @@ public class Spieler extends Thread
 		String m;
 		String[] ms;
 		while ((m = rein.readLine()) != null)
-		{
-			receiveMessages();
+		{		
+			ms = m.split(">",2);
+			switch (ms[0])
+			{
+			case "<msg": // Chat Message for this Player; in ms[1], the Chat is
+							// saved
+			{
+				parent.sendMsgToAll(m);
+				break;
+			}
+			case "<newFil": //<newFil>fid,typ,groeße
+			{
+				String[] infos = ms[1].split(">");
+				filialeKaufen(Integer.parseInt(infos[0]), name, Integer.parseInt(infos[1]), Integer.parseInt(infos[2]));
+			}
+			default:
+				break;
+			}
 		}
-		ms = m.split(">");
-		switch (ms[0])
-		{
-		case "<msg": // Chat Message for this Player; in ms[1], the Chat is
-						// saved
-		{
-			parent.sendMsgToAll(m);
-			break;
-		}
-		default:
-			break;
-		}
+		
 	}
 
 	public void sendToPlayer(String msg)
@@ -76,5 +81,22 @@ public class Spieler extends Thread
 					+ e.getMessage());
 		}
 
+	}
+	public void filialeKaufen(int fid, String spieler, int typ, int groeße)
+	{
+		String besitzer;
+		Bezirk bezirk;
+		try
+		{
+			bezirk = parent.getBezirk((int)(fid/10));			
+		} catch (Exception e)
+		{
+			bezirk = parent.getBezirk(0);			
+		}
+		besitzer = bezirk.getFiliale(fid).getBesitzer();
+		if (besitzer == null)
+		{
+			bezirk.getFiliale(fid).eroeffnen(groeße, typ, spieler);
+		}
 	}
 }

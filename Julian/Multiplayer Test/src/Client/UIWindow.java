@@ -106,9 +106,9 @@ public class UIWindow {
 			int z = 0;
 			for (int i = 0; i < bezirk_node.getLength(); i++)
 			{
-				System.out.println("Neuer Bezirk"
-						+ bezirk_node.item(i).getAttributes().getNamedItem("name")
-								.getNodeValue());
+				//System.out.println("Neuer Bezirk"
+				//		+ bezirk_node.item(i).getAttributes().getNamedItem("name")
+				//				.getNodeValue());
 				int anzFil = Integer.parseInt(bezirk_node.item(i).getAttributes().getNamedItem("maxFilialen").getNodeValue());
 //				bezirke[i] = new Bezirk(
 //								Integer.parseInt(bezirk_node.item(i).getAttributes()
@@ -139,7 +139,7 @@ public class UIWindow {
 					pane.add(btn);
 				}
 				pane.add(bezirk_lbl[i]);	
-				System.out.println("  AnzFilialen: " + anzFil);
+				//System.out.println("  AnzFilialen: " + anzFil);
 			}		
 			System.out.println("AnzFilialen gesamt: " + z);
 		} catch (ParserConfigurationException|SAXException|IOException e)
