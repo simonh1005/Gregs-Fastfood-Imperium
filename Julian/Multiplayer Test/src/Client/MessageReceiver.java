@@ -7,7 +7,10 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 import javax.sound.midi.Receiver;
+<<<<<<< HEAD
 import javax.swing.JDialog;
+=======
+>>>>>>> branch 'master' of https://github.com/simonh1005/Gregs-Fastfood-Imperium.git
 import javax.swing.JOptionPane;
 
 
@@ -74,7 +77,8 @@ public class MessageReceiver extends Thread
 				{
 					if(ms[1].equals("server"))
 					{
-						ClientLogic.serverDisconnected();
+						JOptionPane.showMessageDialog(null, "Server disconnected.");
+						System.exit(0);
 					}
 				}
 				default:
