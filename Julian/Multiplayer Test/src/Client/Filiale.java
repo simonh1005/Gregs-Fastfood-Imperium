@@ -16,18 +16,26 @@ public class Filiale {
 	private double verkaufsPreis;
 	private static int freieMitarbeiter = Spieler.getfreieMitarbeiter();
 	private static double betriebsKostenF;
+	private String name;
 	
-	public Filiale(int fID, int typ, int bezirk, int mitarbeiter, int produktPreis, String besitzer, int absatz, int groeﬂe, int qualitaet, int verkaufsPreis){
-		this.fID = fID;
-		this.typ = typ; 
-		this.bezirk = bezirk; 
-		this.mitarbeiter = mitarbeiter;
-		this.produktPreis = produktPreis;
-		this.besitzer = besitzer;
-		this.absatz = absatz; 
-		this.groeﬂe = groeﬂe; 
-		this.qualitaet = qualitaet; 
-		this.verkaufsPreis = verkaufsPreis;
+	public Filiale(int id, String name, int kaufpreis)
+	{
+		this.fID = id;
+		this.name = name;		
+		this.kaufPreis = kaufpreis;
+	}
+
+	public String toHTML()
+	{
+		if (typ == 0) //Filiale noch neutral
+		{
+			return "<HTML><BODY>" +
+					"Filiale : " + name +
+					"<br> Kaufpreis: " + kaufPreis
+					+ "Ä</HTML></BODY>";
+		}
+		return "verkauft";
+		
 	}
 	
 	

@@ -5,9 +5,17 @@ public class Bezirk {
 	private int einwohner;
 	private int[] boni = new int[3];
 	private int freieKundschaft;
-	private int maxAnzFilialen;
+	private int maxFilialen;
 	private static int bID;
 	
+	public Bezirk(int id, String name, int einwohner, int maxFilialen, int[] boni)
+	{
+		this.bID = id;
+		this.name = name;
+		this.einwohner = einwohner;
+		this.maxFilialen = maxFilialen;
+		this.boni = boni;
+	}
 	public double getEinnahmen(int fid){
 		
 		return 1.65;
@@ -81,12 +89,12 @@ public class Bezirk {
 		this.freieKundschaft = freieKundschaft;
 	}
 
-	public int getMaxAnzFilialen() {
-		return maxAnzFilialen;
+	public int getMaxFilialen() {
+		return maxFilialen;
 	}
 
-	public void setMaxAnzFilialen(int maxAnzFilialen) {
-		this.maxAnzFilialen = maxAnzFilialen;
+	public void setMaxFilialen(int maxAnzFilialen) {
+		this.maxFilialen = maxAnzFilialen;
 	}
 
 	public static int getbID() {
