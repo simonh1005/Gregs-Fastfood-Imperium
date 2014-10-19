@@ -164,14 +164,18 @@ public class Spiel
 		{
 			s.sendToPlayer("<rundenEnde>");
 		}
+	}	
+	public Bezirk getBezirk(int id)
+	{
+		return bezirke[id];
 	}
 
 	public void sendMsgToAll(String msg)
 	{
-
-	}
-	public Bezirk getBezirk(int id)
-	{
-		return bezirke[id];
+		for (Spieler s: spieler)
+		{
+			s.sendToPlayer(msg);
+		}
+		
 	}
 }

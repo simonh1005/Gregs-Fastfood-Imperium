@@ -18,8 +18,7 @@ public class Spieler extends Thread
 		super();
 		this.s = s;	
 		this.parent = parent;
-	}
-
+	}	
 	private void receiveMessages() throws IOException
 	{
 		InputStream is = s.getInputStream();
@@ -49,7 +48,7 @@ public class Spieler extends Thread
 				String[] infos = ms[1].split(">");
 				filialeKaufen(Integer.parseInt(infos[0]), name, Integer.parseInt(infos[1]), Integer.parseInt(infos[2]));
 			}
-			case "<FilUpd": //<newFil>fid,typ,groeﬂe
+			case "<FilUpd": //<FilUpd>fid,...
 			{
 				String[] infos = ms[1].split(">");
 				filialeKaufen(Integer.parseInt(infos[0]), name, Integer.parseInt(infos[1]), Integer.parseInt(infos[2]));
@@ -102,6 +101,8 @@ public class Spieler extends Thread
 		if (besitzer == null)
 		{
 			bezirk.getFiliale(fid).eroeffnen(groeﬂe, typ, spieler);
+			parent.sendMsgToAll("<filKauf>" + fid + "," + spieler + "," + typ + "," + groeﬂe); //<FilUpd>fid,spieler,typ,groeﬂe
 		}
+		
 	}
 }
