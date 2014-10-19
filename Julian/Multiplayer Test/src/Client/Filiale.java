@@ -306,7 +306,7 @@ public class Filiale {
 	}
 	
 	public static double verkaufen(){
-		double verkaufsPreis = wert * 0.5;
+		double FilialeVerkaufsPreis = wert * 0.5;
 		typ = 0;
 		mitarbeiter = 0;
 		produktPreis = 0;
@@ -316,7 +316,7 @@ public class Filiale {
 		groeße = 0;
 		qualitaet = 0;
 		freieMitarbeiter = 0;		
-		return verkaufsPreis;
+		return FilialeVerkaufsPreis;
 	}
 
 	public int getAbsatz() {
