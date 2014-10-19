@@ -1,21 +1,21 @@
 package Client;
 
 public class Filiale {
-	private static int fID;
-	private static int typ;
+	private int fID;
+	private int typ;
 	private int bezirk;
-	private static int mitarbeiter;
-	private static double produktPreis;
-	private static String besitzer;
-	private static int filialnummer;
-	private static int absatz;
-	private static double wert;
-	private static int groeﬂe;
-	private static int qualitaet;
+	private int mitarbeiter;
+	private double produktPreis;
+	private String besitzer;
+	private int filialnummer;
+	private int absatz;
+	private double wert;
+	private int groeﬂe;
+	private int qualitaet;
 	private double kaufPreis;
 	private double verkaufsPreis;
-	private static int freieMitarbeiter = Spieler.getfreieMitarbeiter();
-	private static double betriebsKostenF;
+	private int freieMitarbeiter = Spieler.getfreieMitarbeiter();
+	private double betriebsKostenF;
 	private String name;
 	
 	public Filiale(int id, String name, int kaufpreis)
@@ -313,7 +313,7 @@ public class Filiale {
 		this.besitzer = besitzer;
 	}
 	
-	public static double verkaufen(){
+	public double verkaufen(){
 		double FilialeVerkaufsPreis = wert * 0.5;
 		typ = 0;
 		mitarbeiter = 0;
@@ -327,75 +327,129 @@ public class Filiale {
 		return FilialeVerkaufsPreis;
 	}
 
-	public int getAbsatz() {
-		return absatz;
-	}
+	
 
-	public static void setAbsatz(int absatz2) {
-		absatz = absatz2;
-	}
-
-	public static int getFid() {
+	public int getfID() {
 		return fID;
 	}
 
-	public static void setFid(int fid) {
-		fID = fid;
+	public void setfID(int fID) {
+		this.fID = fID;
+	}
+
+	public int getTyp() {
+		return typ;
+	}
+
+	public void setTyp(int typ) {
+		this.typ = typ;
+	}
+
+	public int getBezirk() {
+		return bezirk;
+	}
+
+	public void setBezirk(int bezirk) {
+		this.bezirk = bezirk;
+	}
+
+	public int getMitarbeiter() {
+		return mitarbeiter;
+	}
+
+	public void setMitarbeiter(int mitarbeiter) {
+		this.mitarbeiter = mitarbeiter;
 	}
 
 	public double getProduktPreis() {
 		return produktPreis;
 	}
 
-	public static void setProduktPreis(double preis) {
-		produktPreis = preis;
+	public void setProduktPreis(double produktPreis) {
+		this.produktPreis = produktPreis;
 	}
 
-	public static void setMitarbeiter(int mitarbeiter2) {
-		mitarbeiter = mitarbeiter2;
-		
-	}
-
-	public static void setGroeﬂe(int groeﬂe2) {
-		groeﬂe = groeﬂe2;
-		
-	}
-
-	public static void setQualitaet(int qualitaet2) {
-		qualitaet = qualitaet2;
-		
-	}
-
-
-	public static double getBetriebsKostenF() {
-		return betriebsKostenF;
-	}
-
-
-	public static void setBetriebsKostenF(double betriebsKostenF) {
-		Filiale.betriebsKostenF = betriebsKostenF;
-	}
-
-
-	public static String getBesitzer() {
+	public String getBesitzer() {
 		return besitzer;
 	}
 
-
-	public static void setBesitzer(String besitzer) {
-		Filiale.besitzer = besitzer;
+	public void setBesitzer(String besitzer) {
+		this.besitzer = besitzer;
 	}
 
-
-	public static int getTyp() {
-		return typ;
+	public int getFilialnummer() {
+		return filialnummer;
 	}
 
-
-	public static void setTyp(int typ) {
-		Filiale.typ = typ;
+	public void setFilialnummer(int filialnummer) {
+		this.filialnummer = filialnummer;
 	}
 
+	public int getAbsatz() {
+		return absatz;
+	}
+
+	public void setAbsatz(int absatz) {
+		this.absatz = absatz;
+	}
+
+	public double getWert() {
+		return wert;
+	}
+
+	public void setWert(double wert) {
+		this.wert = wert;
+	}
+
+	public int getGroeﬂe() {
+		return groeﬂe;
+	}
+
+	public void setGroeﬂe(int groeﬂe) {
+		this.groeﬂe = groeﬂe;
+	}
+
+	public int getQualitaet() {
+		return qualitaet;
+	}
+
+	public void setQualitaet(int qualitaet) {
+		this.qualitaet = qualitaet;
+	}
+
+	public double getKaufPreis() {
+		return kaufPreis;
+	}
+
+	public void setKaufPreis(double kaufPreis) {
+		this.kaufPreis = kaufPreis;
+	}
+
+	public int getFreieMitarbeiter() {
+		return freieMitarbeiter;
+	}
+
+	public void setFreieMitarbeiter(int freieMitarbeiter) {
+		this.freieMitarbeiter = freieMitarbeiter;
+	}
+
+	public double getBetriebsKostenF() {
+		return betriebsKostenF;
+	}
+
+	public void setBetriebsKostenF(double betriebsKostenF) {
+		this.betriebsKostenF = betriebsKostenF;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 
 	
 	

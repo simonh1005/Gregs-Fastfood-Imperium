@@ -4,7 +4,7 @@ public class SpielLogik {
 
 	private int aktJahr;
 	private int aktQuartal;
-	
+	private static Spieler spieler = new Spieler();
 	
 	
 	public void spielStarten(){
@@ -26,6 +26,14 @@ public class SpielLogik {
 	
 	public void setAbsaetze(int[] absatz){
 		
+	}
+
+	public static Spieler getSpieler() {
+		return spieler;
+	}
+
+	public void setSpieler(Spieler spieler) {
+		this.spieler = spieler;
 	}
 	
 	

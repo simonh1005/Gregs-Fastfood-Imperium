@@ -13,7 +13,9 @@ public class Spieler {
 	private int liquiditaetCounter = 0;
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
-
+	
+	private Bezirk[] Bezirke = new Bezirk[8];			//wie die fids auf bezirke verteilen?
+	private Filiale[] Filialen = new Filiale[42];		//noch ersetzen
 	
 	public int mitarbeiterzahlVeraendern(int menge) { // Menge kann z.B. +3 oder -3 sein. 
 		mitarbeiterPool = mitarbeiterPool + menge;
@@ -40,20 +42,20 @@ public class Spieler {
 
 	
 	public void filialeEroeffnen(int fid, int groeﬂe, int typ, String nameBesitzer) {
-		Filiale.setFid(fid);
-		Filiale.setGroeﬂe(groeﬂe);
-		Filiale.setTyp(typ);
-		Filiale.setBesitzer(nameBesitzer);
+		Filialen[fid].setfID(fid);
+		Filialen[fid].setGroeﬂe(groeﬂe);
+		Filialen[fid].setTyp(typ);
+		Filialen[fid].setBesitzer(nameBesitzer);
 
 	}
 
 	
 	public void einkaufen(VerbrauchT einkauf) {
-		// noch zu implementieren
+		// noch zu implementieren		an Server
 	}
 
 	private void berechneRohstoffverbrauch(boolean ist) {
-		// noch zu implementieren
+		// noch zu implementieren		Was soll die machen?
 	}
 
 	
@@ -72,8 +74,8 @@ public class Spieler {
 
 		for (int j = 0; j < 42; j++) { // Filialen durchgehen
 
-			if (Filiale.getFid() == j && Filiale.getBesitzer().equals(name)) {
-				betriebsKosten = betriebsKosten + Filiale.getBetriebsKostenF();
+			if (Filialen[j].getBesitzer().equals(name)) {
+				betriebsKosten = betriebsKosten + Filialen[j].getBetriebsKostenF();
 			}
 
 		}
@@ -90,6 +92,23 @@ public class Spieler {
 	public void setLiquiditaet() {
 		liquiditaet = (kontostand / monatlicheKosten) * 100;
 	}
+
+	public Bezirk[] getBezirke() {
+		return Bezirke;
+	}
+
+	public void setBezirke(Bezirk[] bezirke) {
+		Bezirke = bezirke;
+	}
+
+	public VerbrauchT getVorraete() {
+		return vorraete;
+	}
+
+	public void setVorraete(VerbrauchT vorraete) {
+		this.vorraete = vorraete;
+	}
+	
 	
 	
 

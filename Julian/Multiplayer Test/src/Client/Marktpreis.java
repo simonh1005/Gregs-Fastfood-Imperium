@@ -11,11 +11,11 @@ public class Marktpreis {
 	private int id;
 	
 	private void einkaufen(int menge, int qualitaet, int zutatID){
-		Server.Marktpreis.einkaufen(menge, qualitaet);
+		Server.Marktpreis.einkaufen(menge, qualitaet);					// An Server
 		getPrice(menge, qualitaet);
 	}
 	
-	public double verbrauchZuPreis(VerbrauchT verbrauch){		// ???
+	public double verbrauchZuPreis(VerbrauchT verbrauch){		// An Server Verbrauch senden und preis kriegen
 		double test = 1.45;
 		return test;
 	}

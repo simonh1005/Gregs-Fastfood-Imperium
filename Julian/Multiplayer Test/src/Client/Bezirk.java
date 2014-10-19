@@ -1,5 +1,6 @@
 package Client;
 
+
 public class Bezirk {
 	private String name;
 	private int einwohner;
@@ -7,6 +8,10 @@ public class Bezirk {
 	private int freieKundschaft;
 	private int maxFilialen;
 	private static int bID;
+	
+	private Filiale[] Filialen = new Filiale[42];
+	private int maxKundenVomServer = 20; // Noch vom Server kriegen
+	
 	
 	public Bezirk(int id, String name, int einwohner, int maxFilialen, int[] boni)
 	{
@@ -17,8 +22,12 @@ public class Bezirk {
 		this.boni = boni;
 	}
 	public double getEinnahmen(int fid){
-		
-		return 1.65;
+		VerbrauchT vorrat = SpielLogik.getSpieler().getVorraete();
+		VerbrauchT verbrauch = Filialen[fid].getVerbrauch(maxKundenVomServer);
+		// hier weiter...
+		int maxZutaten = 20;
+		double einnahmen = Filialen[fid].getEinnahmen(maxZutaten, maxKundenVomServer);
+		return einnahmen;
 	}
 	public String toHTML() //Labels kˆnnen nur Zeilenumbr¸che in HTML
 	{
@@ -29,8 +38,8 @@ public class Bezirk {
 		return test;
 	}
 	
-	public void setAbsaetze(int absatz){
-		Filiale.setAbsatz(absatz);
+	public void setAbsaetze(int absatz, int fid){
+		Filialen[fid].setAbsatz(absatz);
 	}
 	
 	public void filialeEroeffnen(int filialnummer){
@@ -38,23 +47,23 @@ public class Bezirk {
 	}
 	
 	public void setFilialAttribute(int fid, int mitarbeiter, double produktPreis, int groeﬂe, int qualitaet){
-		Filiale.setFid(fid);
-		Filiale.setMitarbeiter(mitarbeiter);
-		Filiale.setProduktPreis(produktPreis);
-		Filiale.setGroeﬂe(groeﬂe);
-		Filiale.setQualitaet(qualitaet);
+		Filialen[fid].setfID(fid);
+		Filialen[fid].setMitarbeiter(mitarbeiter);
+		Filialen[fid].setProduktPreis(produktPreis);
+		Filialen[fid].setGroeﬂe(groeﬂe);
+		Filialen[fid].setQualitaet(qualitaet);
 	}
 	
 	public double verkaufen(int fid){
-		if (Filiale.getFid() == fid) {
-			Filiale.verkaufen();
+		if (Filialen[fid].getfID() == fid) {
+			Filialen[fid].verkaufen();
 		}
 		return 1.45;
 	}
 	
 	public void setProduktPreis(int fid, double preis){
-		if (Filiale.getFid() == fid) {
-			Filiale.setProduktPreis(preis);
+		if (Filialen[fid].getfID() == fid) {
+			Filialen[fid].setProduktPreis(preis);
 		}
 	}
 
@@ -107,6 +116,14 @@ public class Bezirk {
 	public void setbID(int bID) {
 		this.bID = bID;
 	}
+	public Filiale[] getFilialen() {
+		return Filialen;
+	}
+	public void setFilialen(Filiale[] filialen) {
+		Filialen = filialen;
+	}
+	
+	
 	
 	
 }

@@ -1,7 +1,5 @@
 package Client;
 
-import Server.QuartalsBericht;
-
 public class JahresBerichtAlle {
 	private int jahr;
 	private QuartalsBericht[] berichte;
@@ -24,6 +22,7 @@ public class JahresBerichtAlle {
 			berichte[i] = QuartalsBericht.readFromString(qb[i]);
 		}
 	}
+	
 	public JahresBerichtAlle(int AnzPlayer)
 	{
 		berichte = new QuartalsBericht[AnzPlayer];
