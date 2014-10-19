@@ -110,31 +110,31 @@ public class UIWindow {
 				//		+ bezirk_node.item(i).getAttributes().getNamedItem("name")
 				//				.getNodeValue());
 				int anzFil = Integer.parseInt(bezirk_node.item(i).getAttributes().getNamedItem("maxFilialen").getNodeValue());
-//				bezirke[i] = new Bezirk(
-//								Integer.parseInt(bezirk_node.item(i).getAttributes()
-//								.getNamedItem("id").getNodeValue()), bezirk_node.item(i)
-//								.getAttributes().getNamedItem("name")
-//								.getNodeValue(), Integer.parseInt(bezirk_node.item(i)
-//								.getAttributes().getNamedItem("einwohner")
-//								.getNodeValue()), anzFil, bezirk_node.item(i).getAttributes()
-//								.getNamedItem("boni").getNodeValue());
+				int[] boni = {1,1,1};
+				bezirke[i] = new Bezirk(
+								Integer.parseInt(bezirk_node.item(i).getAttributes()
+								.getNamedItem("id").getNodeValue()), bezirk_node.item(i)
+								.getAttributes().getNamedItem("name")
+								.getNodeValue(), Integer.parseInt(bezirk_node.item(i)
+								.getAttributes().getNamedItem("einwohner")
+								.getNodeValue()), anzFil, boni);
 				
 				bezirk_lbl[i] = new JLabel("");			
 //				bezirk_lbl[i].setBackground(Color.white); //zum Testen
 //				bezirk_lbl[i].setOpaque(true);
-//				bezirk_lbl[i].setToolTipText(bezirke[i].toHTML());
+				bezirk_lbl[i].setToolTipText(bezirke[i].toHTML());
 				bezirk_lbl[i].setBounds(bezirk_pos[i]);
 					
 				for (int j = 0; j < anzFil; j++)
 				{
 					Element f = (Element) filiale_node.item(z);
 					Rectangle pos = new Rectangle(Integer.parseInt(getDirectChildValue(f, "posX")),Integer.parseInt(getDirectChildValue(f, "posY")),10,10);
-//					filialen[z] = new Filiale(10*i+j, getDirectChildValue(f, "name"),Integer.parseInt(getDirectChildValue(f, "kaufpreis")));					
+					filialen[z] = new Filiale(10*i+j, getDirectChildValue(f, "name"),Integer.parseInt(getDirectChildValue(f, "kaufpreis")));					
 					JButton btn = new JButton();
 					btn.setForeground(Color.LIGHT_GRAY);
 					btn.setBounds(pos);
 					btn.setName("fil_btn" + 10*i+j);
-//					btn.addActionListener(new FilialListener(filialen[z],pane));
+					btn.addActionListener(new FilialListener(filialen[z],pane));
 					z++;
 					pane.add(btn);
 				}
@@ -247,11 +247,7 @@ public class UIWindow {
 		
 		JLayeredPane layeredPane_11 = new JLayeredPane();
 		tabbedPane_2.addTab("Map", null, layeredPane_11, null);
-		
-		JButton button = new JButton("");
-		button.setForeground(Color.RED);
-		button.setBounds(235, 126, 10, 10);
-		layeredPane_11.add(button);	
+
 		
 		buildMap(layeredPane_11);
 		JLabel label_1 = new JLabel("");

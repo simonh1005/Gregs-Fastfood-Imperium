@@ -49,6 +49,11 @@ public class Spieler extends Thread
 				String[] infos = ms[1].split(">");
 				filialeKaufen(Integer.parseInt(infos[0]), name, Integer.parseInt(infos[1]), Integer.parseInt(infos[2]));
 			}
+			case "<FilUpd": //<newFil>fid,typ,groeße
+			{
+				String[] infos = ms[1].split(">");
+				filialeKaufen(Integer.parseInt(infos[0]), name, Integer.parseInt(infos[1]), Integer.parseInt(infos[2]));
+			}
 			default:
 				break;
 			}

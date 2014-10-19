@@ -20,7 +20,10 @@ public class Bezirk {
 		
 		return 1.65;
 	}
-	
+	public String toHTML() //Labels können nur Zeilenumbrüche in HTML
+	{
+		return "<HTML><BODY>Bezirk: " + name + "<br> Einwohnerzahl: " + einwohner + "<br> Boni: Noch nicht erforscht</HTML></BODY>";
+	}
 	public VerbrauchT getVerbrauch(int maxZutaten){
 		VerbrauchT test = new VerbrauchT();
 		return test;
