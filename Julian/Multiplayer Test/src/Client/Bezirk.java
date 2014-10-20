@@ -116,8 +116,12 @@ public class Bezirk {
 	public void setbID(int bID) {
 		this.bID = bID;
 	}
-	public Filiale[] getFilialen() {
-		return Filialen;
+	public Filiale getFilialen(int fid) {
+		try
+		{
+			return Filialen[fid %(bID*10)]; 
+		} catch (Exception e){}
+			return Filialen[fid]; //Filiale 0
 	}
 	public void setFilialen(Filiale[] filialen) {
 		Filialen = filialen;

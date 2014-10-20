@@ -14,8 +14,7 @@ public class Spieler {
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
 	
-	private Bezirk[] Bezirke = new Bezirk[8];			//wie die fids auf bezirke verteilen?
-	private Filiale[] Filialen = new Filiale[42];		//noch ersetzen
+	private Bezirk[] Bezirke = new Bezirk[8];	
 	
 	public int mitarbeiterzahlVeraendern(int menge) { // Menge kann z.B. +3 oder -3 sein. 
 		mitarbeiterPool = mitarbeiterPool + menge;
@@ -41,11 +40,11 @@ public class Spieler {
 	}
 
 	
-	public void filialeEroeffnen(int fid, int groeﬂe, int typ, String nameBesitzer) {
-		Filialen[fid].setfID(fid);
-		Filialen[fid].setGroeﬂe(groeﬂe);
-		Filialen[fid].setTyp(typ);
-		Filialen[fid].setBesitzer(nameBesitzer);
+	public void filialeEroeffnen(int fid, int groeﬂe, int typ, String nameBesitzer, int bID) {
+		Bezirke[bID].getFilialen(fid).setfID(fid);
+		Bezirke[bID].getFilialen(fid).setGroeﬂe(groeﬂe);
+		Bezirke[bID].getFilialen(fid).setTyp(typ);
+		Bezirke[bID].getFilialen(fid).setBesitzer(nameBesitzer);
 
 	}
 
@@ -73,11 +72,11 @@ public class Spieler {
 		double monatKosten;
 
 		for (int j = 0; j < 42; j++) { // Filialen durchgehen
-
-			if (Filialen[j].getBesitzer().equals(name)) {
-				betriebsKosten = betriebsKosten + Filialen[j].getBetriebsKostenF();
+			for (int i = 0; i < Bezirke.length; i++) {
+				if (Bezirke[i].getFilialen(j).getBesitzer().equals(name)) {
+					betriebsKosten = betriebsKosten + Bezirke[i].getFilialen(j).getBetriebsKostenF();
+				}	
 			}
-
 		}
 		
 		monatKosten = mitarbeiterKosten + betriebsKosten;
