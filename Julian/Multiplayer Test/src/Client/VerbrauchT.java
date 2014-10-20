@@ -95,7 +95,36 @@ public class VerbrauchT {
 			verbrauchD[i] += tmp[i];
 		}
 	}
-
+	public void mult(int faktor)
+	{
+		for (int i = 0; i < 3; i++) {
+			verbrauchA[i] *= faktor;
+		}
+		for (int i = 0; i < 3; i++) {
+			verbrauchB[i] *= faktor;
+		}
+		for (int i = 0; i < 3; i++) {
+			verbrauchC[i] *= faktor;
+		}
+		for (int i = 0; i < 3; i++) {
+			verbrauchD[i] *= faktor;
+		}
+	}
+	public void div(int faktor)
+	{
+		for (int i = 0; i < 3; i++) {
+			verbrauchA[i] /= faktor;
+		}
+		for (int i = 0; i < 3; i++) {
+			verbrauchB[i] /= faktor;
+		}
+		for (int i = 0; i < 3; i++) {
+			verbrauchC[i] /= faktor;
+		}
+		for (int i = 0; i < 3; i++) {
+			verbrauchD[i] /= faktor;
+		}
+	}
 	public VerbrauchT getCopy() {
 		return new VerbrauchT(verbrauchA, verbrauchB, verbrauchC, verbrauchD);
 	}

@@ -50,20 +50,20 @@ public class MessageReceiver extends Thread
 					JOptionPane.showConfirmDialog(parent, "Rundenedme");
 					break;
 				}
-				case "<answer": //Antwort des Servers auf eine Anfrage, in ms[1] steht die Anfrage, auf dieGeantwortet wurde, in ms[2] die Antwort
-				{
-					switch (ms[1])
-					{
-					case "filpruef":
-						int fid = Integer.parseInt(ms[2].split(">")[0]);
-						String besitzer = ms[2].split(">")[1];
-						break;
-
-					default:
-						break;
-					}
-					break;
-				}
+//				case "<answer": //Antwort des Servers auf eine Anfrage, in ms[1] steht die Anfrage, auf dieGeantwortet wurde, in ms[2] die Antwort
+//				{
+//					switch (ms[1])
+//					{
+//					case "filpruef":
+//						int fid = Integer.parseInt(ms[2].split(">")[0]);
+//						String besitzer = ms[2].split(">")[1];
+//						break;
+//
+//					default:
+//						break;
+//					}
+//					break;
+//				}
 				case "<start":
 				{
 					UIWindow window = new UIWindow();
