@@ -25,7 +25,6 @@ public class SpielLogik {
 	
 	public void rundenEnde(){
 		//spieler.sendToServer("blubb");
-		
 	}
 	
 	public QuartalsBericht showBerichte(String spieler,int jahr, int quartal){
