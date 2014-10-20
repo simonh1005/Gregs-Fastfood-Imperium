@@ -22,33 +22,6 @@ public class Bezirk {
 		this.parent = parent;
 	}
 
-	public double getEinnahmen(int fid) { // Einnahmen weiter implementieren
-		VerbrauchT vorrat = parent.getVorraete();
-		VerbrauchT verbrauch = Filialen[fid].getVerbrauch(maxKundenVomServer[fid]);
-		
-		int[] voz1 = vorrat.getZutat(1);
-		int[] voz2 = vorrat.getZutat(2);
-		int[] voz3 = vorrat.getZutat(3);
-		int[] voz4 = vorrat.getZutat(4);
-		
-		int[] vez1 = verbrauch.getZutat(1);
-		int[] vez2 = verbrauch.getZutat(2);
-		int[] vez3 = verbrauch.getZutat(3);
-		int[] vez4 = verbrauch.getZutat(4);
-		
-		// vorrat / verbrauch = maxZutaten; <---- Stimmt das so?
-		
-		
-		// hier weiter...
-		
-		
-		
-		int maxZutaten = 20;
-		double einnahmen = Filialen[fid].getEinnahmen(maxZutaten,
-				maxKundenVomServer[fid]);
-		return einnahmen;
-	}
-
 	public String toHTML() // Labels können nur Zeilenumbrüche in HTML
 	{
 		return "<HTML><BODY>Bezirk: " + name + "<br> Einwohnerzahl: "

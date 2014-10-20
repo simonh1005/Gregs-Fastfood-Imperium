@@ -220,6 +220,8 @@ public class Filiale {
 			anz = anz1;
 		}
 		
+		
+		
 		double einnahmen = verkaufsPreis * anz;
 		
 		return einnahmen;
