@@ -23,7 +23,7 @@ public class SpielLogik {
 		JOptionPane.showMessageDialog(null, "Sie haben leider verloren.");
 	}
 	
-	public void rundenEnde(){
+	public void rundenEnde(){				// die Kunden pro Filiale vom Server kriegen als int[]
 		//spieler.sendToServer("blubb");
 	}
 	

@@ -8,9 +8,8 @@ public class Filiale {
 	private int mitarbeiter;
 	private double produktPreis;
 	private String besitzer;
-	private int filialnummer;
-	private int absatz;
-	private double wert;
+	private int absatz;		//Wie viele Einheiten die Filiale absetzt
+	private double wert;	// Wert der Filiale
 	private int groeße; // groeße = 1: Mitarbeiter max 5;
 						// groeße = 2: Mitarbeiter max 20;
 						// groeße = 3: Mitarbeiter max 60;
@@ -63,101 +62,10 @@ public class Filiale {
 		return mitarbeiter;
 	}
 
-	public VerbrauchT getVerbrauch() { // Soll Verbrauch
-		Zutat[] tmpZ = fastFood.getZutaten();
+	
 
-		VerbrauchT tmpV = new VerbrauchT();
 
-		if (tmpZ[0].getId() == 1) { // Für alle FastFoods gilt ja, dass die
-									// erste Zutat die Teigwaren sind. Also nur
-									// eine Abfrage.
-
-			if (tmpZ[0].getQualitaet() == 1) {
-				int wert = 1 * absatz;
-				int[] werte = { wert, 0, 0 };
-				tmpV.setZutat(1, werte);
-			}
-
-			if (tmpZ[0].getQualitaet() == 2) {
-				int wert = 1 * absatz;
-				int[] werte = { 0, wert, 0 };
-				tmpV.setZutat(1, werte);
-			}
-
-			if (tmpZ[0].getQualitaet() == 3) {
-				int wert = 1 * absatz;
-				int[] werte = { 0, 0, wert };
-				tmpV.setZutat(1, werte);
-			}
-		}
-
-		if (tmpZ[1].getId() == 2) {
-
-			if (tmpZ[1].getQualitaet() == 1) {
-				int wert = 2 * absatz;
-				int[] werte = { wert, 0, 0 };
-				tmpV.setZutat(2, werte);
-			}
-
-			if (tmpZ[1].getQualitaet() == 2) {
-				int wert = 2 * absatz;
-				int[] werte = { 0, wert, 0 };
-				tmpV.setZutat(2, werte);
-			}
-
-			if (tmpZ[1].getQualitaet() == 3) {
-				int wert = 2 * absatz;
-				int[] werte = { 0, 0, wert };
-				tmpV.setZutat(2, werte);
-			}
-		}
-
-		if (tmpZ[1].getId() == 3) {
-
-			if (tmpZ[1].getQualitaet() == 1) {
-				int wert = 2 * absatz;
-				int[] werte = { wert, 0, 0 };
-				tmpV.setZutat(3, werte);
-			}
-
-			if (tmpZ[1].getQualitaet() == 2) {
-				int wert = 2 * absatz;
-				int[] werte = { 0, wert, 0 };
-				tmpV.setZutat(3, werte);
-			}
-
-			if (tmpZ[1].getQualitaet() == 3) {
-				int wert = 2 * absatz;
-				int[] werte = { 0, 0, wert };
-				tmpV.setZutat(3, werte);
-			}
-		}
-
-		if (tmpZ[1].getId() == 4) {
-
-			if (tmpZ[1].getQualitaet() == 1) {
-				int wert = 2 * absatz;
-				int[] werte = { wert, 0, 0 };
-				tmpV.setZutat(4, werte);
-			}
-
-			if (tmpZ[1].getQualitaet() == 2) {
-				int wert = 2 * absatz;
-				int[] werte = { 0, wert, 0 };
-				tmpV.setZutat(4, werte);
-			}
-
-			if (tmpZ[1].getQualitaet() == 3) {
-				int wert = 2 * absatz;
-				int[] werte = { 0, 0, wert };
-				tmpV.setZutat(4, werte);
-			}
-		}
-
-		return tmpV;
-	}
-
-	public VerbrauchT getVerbrauch(int maxKunden) { // Ist Verbrauch
+	public VerbrauchT getVerbrauch(int maxKunden) { //bleibt
 		Zutat[] tmpZ = fastFood.getZutaten();
 
 		VerbrauchT tmpV = new VerbrauchT();
@@ -259,25 +167,61 @@ public class Filiale {
 		this.verkaufsPreis = verkaufsPreis;
 	}
 
-	public double getEinnahmen(int maxZutaten, int maxKunden) {	//VerbrauchT maxZutaten
-		// maxZutaten als wurde hier als int eingeplant?
-		// Gehe davon aus das ist der Wert, der sagt wie viele Stück FastFood
-		// mit den jetztigen Zutaten hergestellt werden können.
-		int wirklicheVerkaeufe = 0;
-
-		if (maxZutaten == maxKunden) {
-			wirklicheVerkaeufe = maxKunden;
+	
+	public double getEinnahmen(int maxKunden){	
+		double einnahmen = maxKunden * verkaufsPreis;
+		return einnahmen;
+	}
+	
+	public double getEinnahmen(VerbrauchT maxZutaten) {	
+		int quali = getQualitaet();
+		FastFood food = fastFood;
+		VerbrauchT tmpZ = maxZutaten;
+		
+		Zutat[] z1 = fastFood.getZutaten();
+		
+		int q1 = z1[0].getQualitaet()-1;
+		int q2 = z1[1].getQualitaet()-1;
+		
+		int id1 = z1[1].getId();
+		int id2 = z1[1].getId();
+		
+		int [] maxZ1 = maxZutaten.getZutat(id1);
+		int [] maxZ2 = maxZutaten.getZutat(id2);
+		
+		int menge1 = 0;
+		int menge2 = 0;
+		
+		for (int i = 0; i < maxZ1.length; i++) {
+			if (i == q1) {
+				menge1 = maxZ1[i];
+			}
 		}
-
-		if (maxZutaten > maxKunden) {
-			wirklicheVerkaeufe = maxKunden;
+		
+		for (int i = 0; i < maxZ2.length; i++) {
+			if (i == q2) {
+				menge2 = maxZ2[i];
+			}
 		}
-
-		if (maxZutaten < maxKunden) {
-			wirklicheVerkaeufe = maxZutaten;
+		
+		int anz1 = menge1;
+		int anz2 = menge2/2;
+		int anz = 0;
+		
+		if (anz1 > anz2) {
+			anz = anz2;
 		}
-
-		double einnahmen = wirklicheVerkaeufe * verkaufsPreis;
+		
+		if (anz1 < anz2) {
+			anz = anz1;
+		}
+		
+		if (anz1 == anz2) {
+			anz = anz1;
+		}
+		
+		double einnahmen = verkaufsPreis * anz;
+		
 		return einnahmen;
 	}
 
@@ -307,7 +251,6 @@ public class Filiale {
 		mitarbeiter = 0;
 		produktPreis = 0;
 		besitzer = null;
-		filialnummer = 0;
 		absatz = 0;
 		groeße = 0;
 		qualitaet = 0;
@@ -361,14 +304,6 @@ public class Filiale {
 
 	public void setBesitzer(String besitzer) {
 		this.besitzer = besitzer;
-	}
-
-	public int getFilialnummer() {
-		return filialnummer;
-	}
-
-	public void setFilialnummer(int filialnummer) {
-		this.filialnummer = filialnummer;
 	}
 
 	public int getAbsatz() {
