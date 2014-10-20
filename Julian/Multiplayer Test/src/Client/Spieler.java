@@ -16,6 +16,8 @@ public class Spieler {
 	
 	private Bezirk[] Bezirke = new Bezirk[8];	
 	
+	
+	
 	public int mitarbeiterzahlVeraendern(int menge) { // Menge kann z.B. +3 oder -3 sein. 
 		mitarbeiterPool = mitarbeiterPool + menge;
 		return mitarbeiterPool;
@@ -34,11 +36,6 @@ public class Spieler {
 			SpielLogik.spielBeenden();
 		}
 	}
-
-	public void forschungBetreiben() {
-		// Entfällt
-	}
-
 	
 	public void filialeEroeffnen(int fid, int groeße, int typ, String nameBesitzer, int bID) {
 		Bezirke[bID].getFilialen(fid).setfID(fid);
@@ -50,11 +47,11 @@ public class Spieler {
 
 	
 	public void einkaufen(VerbrauchT einkauf) {
-		// noch zu implementieren		an Server
+		// noch zu implementieren		an Server / Mit Simon drüber reden
 	}
 
 	private void berechneRohstoffverbrauch(boolean ist) {
-		// noch zu implementieren		Was soll die machen?
+		// noch zu implementieren		Was soll die machen? drüber sprechen
 	}
 
 	
