@@ -1,5 +1,7 @@
 package Client;
 
+import java.net.Socket;
+
 public class Spieler {
 	private int mitarbeiterPool;
 	private static int freieMitarbeiter;
@@ -11,6 +13,7 @@ public class Spieler {
 	private double monatlicheKosten;
 	private double liquiditaet;
 	private int liquiditaetCounter = 0;
+	private SpielLogik parent;
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
 	
@@ -33,7 +36,7 @@ public class Spieler {
 		}
 		
 		if (liquiditaetCounter == -3) {		// 3xQuartale negative Liquidität
-			SpielLogik.spielBeenden();
+			parent.spielBeenden();
 		}
 	}
 	
@@ -106,6 +109,8 @@ public class Spieler {
 	}
 	
 	
-	
+	public Spieler(SpielLogik parent, String name, Socket socket){
+		this.parent = parent;
+	}
 
 }

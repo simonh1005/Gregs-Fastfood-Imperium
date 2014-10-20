@@ -259,7 +259,7 @@ public class Filiale {
 		this.verkaufsPreis = verkaufsPreis;
 	}
 
-	public double getEinnahmen(int maxZutaten, int maxKunden) {
+	public double getEinnahmen(int maxZutaten, int maxKunden) {	//VerbrauchT maxZutaten
 		// maxZutaten als wurde hier als int eingeplant?
 		// Gehe davon aus das ist der Wert, der sagt wie viele Stück FastFood
 		// mit den jetztigen Zutaten hergestellt werden können.

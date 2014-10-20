@@ -1,17 +1,22 @@
 package Client;
 
+import java.net.Socket;
+
 public class SpielLogik {
 
 	private int aktJahr;
 	private int aktQuartal;
-	private static Spieler spieler = new Spieler();
-	
+	private Spieler spieler;
+
+	public SpielLogik(Socket socket,String name){ //Infos von Map etc kriegen 
+		spieler = new Spieler(this,name,socket);
+	}
 	
 	public void spielStarten(){
 		//Was passiert hier?
 	}
 	
-	public static void spielBeenden(){
+	public void spielBeenden(){
 		// Was mach ich hier?
 	}
 	
@@ -28,7 +33,7 @@ public class SpielLogik {
 		// Was macht die hier?
 	}
 
-	public static Spieler getSpieler() {
+	public Spieler getSpieler() {
 		return spieler;
 	}
 

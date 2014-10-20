@@ -7,21 +7,23 @@ public class Bezirk {
 	private int freieKundschaft;
 	private int maxFilialen;
 	private int bID;
+	private Spieler parent;
 
 	private Filiale[] Filialen = new Filiale[42];
 	private int[] maxKundenVomServer = new int[42]; // Noch vom Server kriegen als int[]
 
 	public Bezirk(int id, String name, int einwohner, int maxFilialen,
-			int[] boni) {
+			int[] boni,Spieler parent) {
 		this.bID = id;
 		this.name = name;
 		this.einwohner = einwohner;
 		this.maxFilialen = maxFilialen;
 		this.boni = boni;
+		this.parent = parent;
 	}
 
 	public double getEinnahmen(int fid) { // Einnahmen weiter implementieren
-		VerbrauchT vorrat = SpielLogik.getSpieler().getVorraete();
+		VerbrauchT vorrat = parent.getVorraete();
 		VerbrauchT verbrauch = Filialen[fid].getVerbrauch(maxKundenVomServer[fid]);
 		
 		int[] voz1 = vorrat.getZutat(1);
