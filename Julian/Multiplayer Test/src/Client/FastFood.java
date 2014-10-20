@@ -32,7 +32,7 @@ public class FastFood {
 	
 	
 	public Zutat[] getZutaten(){
-		Zutat[] zutaten = new Zutat[1];
+		Zutat[] zutaten = new Zutat[2];
 		
 		
 		if (name.equals("Döner")) {

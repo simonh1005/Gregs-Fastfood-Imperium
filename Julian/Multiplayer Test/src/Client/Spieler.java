@@ -18,6 +18,7 @@ public class Spieler
 	private int liquiditaetCounter = 0;
 	private SpielLogik parent;
 	private Socket socket;
+	private Marktpreis[] preise = new Marktpreis[4];
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
 
@@ -28,6 +29,7 @@ public class Spieler
 		this.parent = parent;
 		this.name = name;
 		this.socket = socket;
+		//preise[1] = new Marktpreis();
 	}
 
 	public void sendToServer(String msg)
@@ -76,14 +78,10 @@ public class Spieler
 
 	}
 
-	public void einkaufen(VerbrauchT einkauf)
+	public void einkaufen(int menge, int qualität, int id)
 	{
 		// noch zu implementieren an Server / Mit Simon drüber reden
-	}
-
-	private void berechneRohstoffverbrauch(boolean ist)
-	{
-		// noch zu implementieren Was soll die machen? drüber sprechen
+		sendToServer("<einkauf>" + menge + "," + qualität + "," +id); //<einkauf>int menge, int qualität, int id
 	}
 
 	public static int getfreieMitarbeiter()

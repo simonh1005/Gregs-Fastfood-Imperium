@@ -87,8 +87,7 @@ public class UIWindow {
 		initialize();
 	}
 	private void buildMap(JLayeredPane pane)
-	{
-		
+	{		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;
 		try
