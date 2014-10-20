@@ -9,7 +9,7 @@ public class Bezirk {
 	private int bID;
 
 	private Filiale[] Filialen = new Filiale[42];
-	private int maxKundenVomServer = 20; // Noch vom Server kriegen
+	private int[] maxKundenVomServer = new int[42]; // Noch vom Server kriegen als int[]
 
 	public Bezirk(int id, String name, int einwohner, int maxFilialen,
 			int[] boni) {
@@ -22,11 +22,28 @@ public class Bezirk {
 
 	public double getEinnahmen(int fid) { // Einnahmen weiter implementieren
 		VerbrauchT vorrat = SpielLogik.getSpieler().getVorraete();
-		VerbrauchT verbrauch = Filialen[fid].getVerbrauch(maxKundenVomServer);
+		VerbrauchT verbrauch = Filialen[fid].getVerbrauch(maxKundenVomServer[fid]);
+		
+		int[] voz1 = vorrat.getZutat(1);
+		int[] voz2 = vorrat.getZutat(2);
+		int[] voz3 = vorrat.getZutat(3);
+		int[] voz4 = vorrat.getZutat(4);
+		
+		int[] vez1 = verbrauch.getZutat(1);
+		int[] vez2 = verbrauch.getZutat(2);
+		int[] vez3 = verbrauch.getZutat(3);
+		int[] vez4 = verbrauch.getZutat(4);
+		
+		// vorrat / verbrauch = maxZutaten; <---- Stimmt das so?
+		
+		
 		// hier weiter...
+		
+		
+		
 		int maxZutaten = 20;
 		double einnahmen = Filialen[fid].getEinnahmen(maxZutaten,
-				maxKundenVomServer);
+				maxKundenVomServer[fid]);
 		return einnahmen;
 	}
 
@@ -48,8 +65,8 @@ public class Bezirk {
 		Filialen[fid].setAbsatz(absatz);
 	}
 
-	public void filialeEroeffnen(int fid, int groeße, int typ, String besitzer) {
-		Filialen[fid].eroeffnen(groeße, typ, besitzer);
+	public void filialeEroeffnen(int fid, int groeße, int typ, String besitzer,int qualitaet) {
+		Filialen[fid].eroeffnen(groeße, typ, besitzer,qualitaet);
 	}
 
 	public void setFilialAttribute(int fid, int mitarbeiter,
@@ -68,7 +85,6 @@ public class Bezirk {
 				verkaufsPreisF = Filialen[fid].verkaufen();
 			}
 		}
-
 		return verkaufsPreisF;
 	}
 

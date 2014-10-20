@@ -8,15 +8,15 @@ public class SpielLogik {
 	
 	
 	public void spielStarten(){
-		
+		//Was passiert hier?
 	}
 	
 	public static void spielBeenden(){
-		
+		// Was mach ich hier?
 	}
 	
 	public void rundenEnde(){
-		
+		// An Server Verbrauch etc senden
 	}
 	
 	public QuartalsBericht showBerichte(String spieler,int jahr, int quartal){
@@ -25,7 +25,7 @@ public class SpielLogik {
 	}
 	
 	public void setAbsaetze(int[] absatz){
-		
+		// Was macht die hier?
 	}
 
 	public static Spieler getSpieler() {

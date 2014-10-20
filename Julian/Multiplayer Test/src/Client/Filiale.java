@@ -3,6 +3,7 @@ package Client;
 public class Filiale {
 	private int fID;
 	private int typ;
+	private FastFood fastFood;
 	private int bezirk;
 	private int mitarbeiter;
 	private double produktPreis;
@@ -63,23 +64,7 @@ public class Filiale {
 	}
 
 	public VerbrauchT getVerbrauch() { // Soll Verbrauch
-		String fastfoodname = "";
-
-		switch (typ) {
-		case 1:
-			fastfoodname = "Döner";
-			break;
-		case 2:
-			fastfoodname = "Currywurst";
-			break;
-		case 3:
-			fastfoodname = "Pizza";
-			break;
-		}
-
-		FastFood fastfood = new FastFood(fastfoodname, qualitaet);
-
-		Zutat[] tmpZ = fastfood.getZutaten();
+		Zutat[] tmpZ = fastFood.getZutaten();
 
 		VerbrauchT tmpV = new VerbrauchT();
 
@@ -173,23 +158,7 @@ public class Filiale {
 	}
 
 	public VerbrauchT getVerbrauch(int maxKunden) { // Ist Verbrauch
-		String fastfoodname = "";
-
-		switch (typ) {
-		case 1:
-			fastfoodname = "Döner";
-			break;
-		case 2:
-			fastfoodname = "Currywurst";
-			break;
-		case 3:
-			fastfoodname = "Pizza";
-			break;
-		}
-
-		FastFood fastfood = new FastFood(fastfoodname, qualitaet);
-
-		Zutat[] tmpZ = fastfood.getZutaten();
+		Zutat[] tmpZ = fastFood.getZutaten();
 
 		VerbrauchT tmpV = new VerbrauchT();
 
@@ -312,8 +281,22 @@ public class Filiale {
 		return einnahmen;
 	}
 
-	public void eroeffnen(int groeße, int typ, String besitzer) {
+	public void eroeffnen(int groeße, int typ, String besitzer, int qualitaet) {
 		this.typ = typ;
+		
+		String fastfoodname = "";
+		switch (typ) {
+		case 1:
+			fastfoodname = "Döner";
+			break;
+		case 2:
+			fastfoodname = "Currywurst";
+			break;
+		case 3:
+			fastfoodname = "Pizza";
+			break;
+		}
+		setFastFood(new FastFood(fastfoodname,qualitaet));
 		this.groeße = groeße;
 		this.besitzer = besitzer;
 	}
@@ -451,5 +434,15 @@ public class Filiale {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public FastFood getFastFood() {
+		return fastFood;
+	}
+
+	public void setFastFood(FastFood fastFood) {
+		this.fastFood = fastFood;
+	}
+	
+	
 
 }
