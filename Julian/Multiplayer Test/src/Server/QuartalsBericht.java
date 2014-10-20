@@ -37,7 +37,7 @@ public class QuartalsBericht
 		return null;
 	}
 
-	public String toString(int jahr, int quartal)
+	public String toString()
 	{
 		return "Bericht;" + spieler + ";" + filialen + ";" + rohstoffe + ";"
 				+ bank + ";" + eK + ";" + fK;

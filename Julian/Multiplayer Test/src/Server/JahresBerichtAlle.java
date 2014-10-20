@@ -14,9 +14,10 @@ public class JahresBerichtAlle
 			berichte[i] = QuartalsBericht.readFromString(qb[i]);
 		}
 	}
-	public JahresBerichtAlle(int AnzPlayer)
+	public JahresBerichtAlle(int AnzPlayer, int jahr)
 	{
 		berichte = new QuartalsBericht[AnzPlayer];
+		this.jahr = jahr;
 	}
 	public void setQuartalsbericht(String b)
 	{

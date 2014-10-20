@@ -47,15 +47,15 @@ public class Spiel
 	{
 		timer.schedule(new TimerTask()
 		{
-			
+
 			@Override
 			public void run()
 			{
 				pruefeRundenEnde();
-				
+
 			}
 		}, 10000);
-		
+
 	}
 
 	private void loadMarket() throws ParserConfigurationException,
@@ -81,11 +81,8 @@ public class Spiel
 
 	}
 
-	private void loadMap() throws ParserConfigurationException // Lese Map
-																// (Bezirke +
-																// Filialen) aus
-																// Datei
-			, SAXException, IOException
+	private void loadMap() throws ParserConfigurationException, SAXException,
+			IOException
 	{
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;
@@ -98,13 +95,13 @@ public class Spiel
 		int z = 0;
 		for (int i = 0; i < bezirk_node.getLength(); i++)
 		{
-			// System.out.println("Neuer Bezirk"
-			// + bezirk_node.item(i).getAttributes().getNamedItem("name")
-			// .getNodeValue());
 			int anzFil = Integer.parseInt(bezirk_node.item(i).getAttributes()
 					.getNamedItem("maxFilialen").getNodeValue());
-			int[] boni = new int[] { 1, 1, 1 }; // Müssen noch richtig
-												// gespeichert werden;
+			String[] boniStr = bezirk_node.item(i).getAttributes()
+					.getNamedItem("name").getNodeValue().split(",");
+			double[] boni = new double[] { Double.parseDouble(boniStr[0]),
+					Double.parseDouble(boniStr[1]),
+					Double.parseDouble(boniStr[2]) };
 			bezirke[i] = new Bezirk(i, bezirk_node.item(i).getAttributes()
 					.getNamedItem("name").getNodeValue(),
 					Integer.parseInt(bezirk_node.item(i).getAttributes()
@@ -136,35 +133,39 @@ public class Spiel
 		return "";
 	}
 
-	private void setJahresBericht(String QuartalsBericht)
+	public void setJahresBericht(String QuartalsBericht)
 	{
-		JahresBerichtAlle bericht =jahresberichte.get(jahresberichte.size()-1);
+		JahresBerichtAlle bericht = jahresberichte
+				.get(jahresberichte.size() - 1);
 		bericht.setQuartalsbericht(QuartalsBericht);
-	}
-
-	public void calcKundschaft()
-	{
-
-	}
-
-	private void calcMarktpreis()
-	{
-
 	}
 
 	public String filialePruefen(int fid, Spieler spieler)
 	{
-		return  bezirke[(int)(fid/10)].getFiliale(fid).getBesitzer();
-		
+		return bezirke[(int) (fid / 10)].getFiliale(fid).getBesitzer();
+
 	}
-	
+
 	public void pruefeRundenEnde()
 	{
-		for (Spieler s : spieler)
+		int z;
+		String kunden = "<kunden>";
+		for (int i = 0; i < bezirke.length; i++)
 		{
-			s.sendToPlayer("<rundenEnde>");
+			int[] bk = bezirke[i].calcKundschaft();
+			for (int j = 0; j < bk.length; j++)
+			{
+				kunden += bk[j] + ",";
+			}
 		}
-	}	
+		Marktpreis.calcMarktPreis();
+		String preise = "<preise>" + Marktpreis.AlltoString();
+		sendMsgToAll("<rundenEnde>");
+		sendMsgToAll(kunden);
+		sendMsgToAll(preise);
+
+	}
+
 	public Bezirk getBezirk(int id)
 	{
 		return bezirke[id];
@@ -172,10 +173,10 @@ public class Spiel
 
 	public void sendMsgToAll(String msg)
 	{
-		for (Spieler s: spieler)
+		for (Spieler s : spieler)
 		{
 			s.sendToPlayer(msg);
 		}
-		
+
 	}
 }

@@ -27,9 +27,6 @@ public class Spieler extends Thread
 		BufferedReader rein = new BufferedReader(new InputStreamReader(
 				s.getInputStream()));
 
-//		name = rein.readLine();
-//		parent.sendMsgToAll("<newPlayer>" + name);
-//		parent.sendMsgToAll("<msg>" + name + ">Joined the room"); // <msg><Chat_name>text
 		String m;
 		String[] ms;
 		while ((m = rein.readLine()) != null)
@@ -52,6 +49,15 @@ public class Spieler extends Thread
 			{
 				String[] infos = ms[1].split(">");
 				filialeKaufen(Integer.parseInt(infos[0]), name, Integer.parseInt(infos[1]), Integer.parseInt(infos[2]));
+			}
+			case "<einkauf": //<einkauf>id,menge,qualitaet
+			{
+				String[] infos = ms[1].split(">");
+				Marktpreis.getMarktPreis(Integer.parseInt(infos[0])).einkaufen(Integer.parseInt(infos[1]), Integer.parseInt(infos[2]));
+			}
+			case "<quartalsbericht": //<quartalsbericht>Quartalsbericht.toString()
+			{
+				parent.setJahresBericht(ms[1]);
 			}
 			default:
 				break;
