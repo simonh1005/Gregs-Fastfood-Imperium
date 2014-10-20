@@ -55,10 +55,8 @@ public class MessageHandler extends Thread
 						int bid = Integer.parseInt(ms[2].split(">")[0].substring(0, 1));
 						int fid = Integer.parseInt(ms[2].split(">")[0].substring(1));
 						String besitzer = ms[2].split(">")[1];
-						parent.getSpieler().getBezirke()[bid].getFilialen(fid).setBesitzer(besitzer);
-						
+						//parent.getSpieler().getBezirke()[bid].getFilialen(fid).setBesitzer(besitzer);						
 						break;
-
 					default:
 						break;
 					}

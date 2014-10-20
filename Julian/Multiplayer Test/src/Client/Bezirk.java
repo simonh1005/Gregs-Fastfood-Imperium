@@ -9,7 +9,7 @@ public class Bezirk {
 	private int bID;
 	private Spieler parent;
 
-	private Filiale[] Filialen = new Filiale[42];
+	private Filiale[] Filialen;
 	private int[] maxKundenVomServer = new int[42]; // Noch vom Server kriegen als int[]
 
 	public Bezirk(int id, String name, int einwohner, int maxFilialen,
@@ -20,6 +20,7 @@ public class Bezirk {
 		this.maxFilialen = maxFilialen;
 		this.boni = boni;
 		this.parent = parent;
+		this.Filialen = new Filiale[maxFilialen];
 	}
 
 	public String toHTML() // Labels kˆnnen nur Zeilenumbr¸che in HTML
@@ -28,31 +29,7 @@ public class Bezirk {
 				+ einwohner + "<br> Boni: Noch nicht erforscht</HTML></BODY>";
 	}
 
-	public VerbrauchT getVerbrauch(int fid, int maxZutaten) {
-		VerbrauchT verbrauch = Filialen[fid].getVerbrauch(maxZutaten); // Evtl.
-																		// Fehler
-																		// die
-																		// maxZutaten?
-		return verbrauch;
-	}
-
-	public void setAbsaetze(int absatz, int fid) {
-		Filialen[fid].setAbsatz(absatz);
-	}
-
-	public void filialeEroeffnen(int fid, int groeﬂe, int typ, String besitzer,int qualitaet) {
-		Filialen[fid].eroeffnen(groeﬂe, typ, besitzer,qualitaet);
-	}
-
-	public void setFilialAttribute(int fid, int mitarbeiter,
-			double produktPreis, int groeﬂe, int qualitaet) {
-		Filialen[fid].setfID(fid);
-		Filialen[fid].setMitarbeiter(mitarbeiter);
-		Filialen[fid].setProduktPreis(produktPreis);
-		Filialen[fid].setGroeﬂe(groeﬂe);
-		Filialen[fid].setQualitaet(qualitaet);
-	}
-
+	
 	public double verkaufen(int fid) {
 		double verkaufsPreisF = 0;
 		for (int i = 0; i < Filialen.length; i++) {
@@ -63,13 +40,6 @@ public class Bezirk {
 		return verkaufsPreisF;
 	}
 
-	public void setProduktPreis(int fid, double preis) {
-		for (int i = 0; i < Filialen.length; i++) {
-			if (Filialen[i].getfID() == fid) {
-				Filialen[i].setProduktPreis(preis);
-			}
-		}
-	}
 
 	public String getName() {
 		return name;
@@ -119,16 +89,13 @@ public class Bezirk {
 		this.bID = bID;
 	}
 
-	public Filiale getFilialen(int fid) {
-		try {
-			return Filialen[fid % (bID * 10)];
-		} catch (Exception e) {
-		}
+	public Filiale getFiliale(int fid) {
+		
 		return Filialen[fid]; // Filiale 0
 	}
 
-	public void setFilialen(Filiale[] filialen) {
-		Filialen = filialen;
+	public void setFiliale(Filiale filiale, int fid) {
+		Filialen[fid] = filiale;
 	}
 
 }

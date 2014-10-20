@@ -19,6 +19,7 @@ public class Filiale {
 	private int freieMitarbeiter = Spieler.getfreieMitarbeiter();
 	private double betriebsKostenF;
 	private String name;
+	private int maxKunden;
 
 	public Filiale(int id, String name, int kaufpreis) {
 		this.fID = id;
@@ -65,7 +66,7 @@ public class Filiale {
 	
 
 
-	public VerbrauchT getVerbrauch(int maxKunden) { //bleibt
+	public VerbrauchT getSollVerbrauch() { //bleibt
 		Zutat[] tmpZ = fastFood.getZutaten();
 
 		VerbrauchT tmpV = new VerbrauchT();
@@ -168,7 +169,7 @@ public class Filiale {
 	}
 
 	
-	public double getEinnahmen(int maxKunden){	
+	public double getEinnahmen(){	
 		double einnahmen = maxKunden * verkaufsPreis;
 		return einnahmen;
 	}
@@ -378,6 +379,16 @@ public class Filiale {
 
 	public void setFastFood(FastFood fastFood) {
 		this.fastFood = fastFood;
+	}
+
+	public int getMaxKunden()
+	{
+		return maxKunden;
+	}
+
+	public void setMaxKunden(int maxKunden)
+	{
+		this.maxKunden = maxKunden;
 	}
 	
 	

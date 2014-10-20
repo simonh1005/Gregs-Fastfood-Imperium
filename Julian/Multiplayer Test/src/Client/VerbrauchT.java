@@ -15,7 +15,44 @@ public class VerbrauchT {
 		this.verbrauchC = verbrauchC;
 		this.verbrauchD = verbrauchD;
 	}
-	
+	public void div(VerbrauchT verbrauch)
+	{
+		int[] tmp = verbrauch.getZutat(1);
+		for (int i = 0; i < 3; i++) {
+			verbrauchA[i] = (verbrauchA[i]/tmp[i])*100;
+		}
+		tmp = verbrauch.getZutat(2);
+		for (int i = 0; i < 3; i++) {
+			verbrauchB[i] = (verbrauchB[i]/tmp[i])*100;
+		}
+		tmp = verbrauch.getZutat(3);
+		for (int i = 0; i < 3; i++) {
+			verbrauchC[i] = (verbrauchC[i]/tmp[i])*100;
+		}
+		tmp = verbrauch.getZutat(4);
+		for (int i = 0; i < 3; i++) {
+			verbrauchD[i] = (verbrauchD[i]/tmp[i])*100;
+		}
+	}
+	public void mult(VerbrauchT verbrauch)
+	{
+		int[] tmp = verbrauch.getZutat(1);
+		for (int i = 0; i < 3; i++) {
+			verbrauchA[i] = (verbrauchA[i]*tmp[i]);
+		}
+		tmp = verbrauch.getZutat(2);
+		for (int i = 0; i < 3; i++) {
+			verbrauchB[i] = (verbrauchB[i]*tmp[i]);
+		}
+		tmp = verbrauch.getZutat(3);
+		for (int i = 0; i < 3; i++) {
+			verbrauchC[i] = (verbrauchC[i]*tmp[i]);
+		}
+		tmp = verbrauch.getZutat(4);
+		for (int i = 0; i < 3; i++) {
+			verbrauchD[i] = (verbrauchD[i]*tmp[i]);
+		}
+	}
 	public VerbrauchT() {
 		this.verbrauchA = new int[] { 0, 0, 0 };
 		this.verbrauchB = new int[] { 0, 0, 0 };
@@ -145,6 +182,43 @@ public class VerbrauchT {
 		}
 		schnitt /= 12;
 		return schnitt;
+	}
+
+	public boolean groeßerGleichAls(VerbrauchT v)
+	{
+		int[] zutat = v.getZutat(1);
+		for (int i = 0; i < zutat.length; i++)
+		{
+			if (zutat[i] > verbrauchA[i])
+			{
+				return false;
+			}			
+		}
+		zutat = v.getZutat(2);
+		for (int i = 0; i < zutat.length; i++)
+		{
+			if (zutat[i] > verbrauchB[i])
+			{
+				return false;
+			}			
+		}
+		zutat = v.getZutat(2);
+		for (int i = 0; i < zutat.length; i++)
+		{
+			if (zutat[i] > verbrauchC[i])
+			{
+				return false;
+			}			
+		}
+		zutat = v.getZutat(2);
+		for (int i = 0; i < zutat.length; i++)
+		{
+			if (zutat[i] > verbrauchD[i])
+			{
+				return false;
+			}			
+		}
+		return true;
 	}
 	
 }

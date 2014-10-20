@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
-public class Spieler {
+public class Spieler
+{
 	private int mitarbeiterPool;
 	private static int freieMitarbeiter;
 	private String name;
@@ -19,16 +20,18 @@ public class Spieler {
 	private Socket socket;
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
-	
-	private Bezirk[] Bezirke = new Bezirk[8];	
-	
-	public Spieler(SpielLogik parent, String name, Socket socket){
+
+	private Bezirk[] bezirke = new Bezirk[8];
+
+	public Spieler(SpielLogik parent, String name, Socket socket)
+	{
 		this.parent = parent;
 		this.name = name;
 		this.socket = socket;
 	}
-	
-	public void sendToServer(String msg){
+
+	public void sendToServer(String msg)
+	{
 		PrintStream raus;
 		try
 		{
@@ -39,95 +42,152 @@ public class Spieler {
 			// unwahrsceinlich und Nachricht nicht kritisch
 		}
 	}
-	
-	public int mitarbeiterzahlVeraendern(int menge) { // Menge kann z.B. +3 oder -3 sein. 
+
+	public int mitarbeiterzahlVeraendern(int menge)
+	{ // Menge kann z.B. +3 oder -3 sein.
 		mitarbeiterPool = mitarbeiterPool + menge;
 		return mitarbeiterPool;
 	}
 
-	public void liquiditaetPruefen() {
-		if (liquiditaet < 100) {
+	public void liquiditaetPruefen()
+	{
+		if (liquiditaet < 100)
+		{
 			liquiditaetCounter++;
 		}
-		
-		if (liquiditaet > 100) {
+
+		if (liquiditaet > 100)
+		{
 			liquiditaetCounter--;
 		}
-		
-		if (liquiditaetCounter == -3) {		// 3xQuartale negative Liquidität
+
+		if (liquiditaetCounter == -3)
+		{ // 3xQuartale negative Liquidität
 			parent.spielBeenden();
 		}
 	}
-	
-	public void filialeEroeffnen(int fid, int groeße, int typ, String nameBesitzer, int bID) {
-		Bezirke[bID].getFilialen(fid).setfID(fid);
-		Bezirke[bID].getFilialen(fid).setGroeße(groeße);
-		Bezirke[bID].getFilialen(fid).setTyp(typ);
-		Bezirke[bID].getFilialen(fid).setBesitzer(nameBesitzer);
+
+	public void filialeEroeffnen(int fid, int groeße, int typ,
+			String nameBesitzer, int qualitaet)
+	{
+
+		bezirke[fid / 10].getFiliale(fid % 10).eroeffnen(groeße, typ,
+				nameBesitzer, qualitaet);
 
 	}
 
-	
-	public void einkaufen(VerbrauchT einkauf) {
-		// noch zu implementieren		an Server / Mit Simon drüber reden
+	public void einkaufen(VerbrauchT einkauf)
+	{
+		// noch zu implementieren an Server / Mit Simon drüber reden
 	}
 
-	private void berechneRohstoffverbrauch(boolean ist) {
-		// noch zu implementieren		Was soll die machen? drüber sprechen
+	private void berechneRohstoffverbrauch(boolean ist)
+	{
+		// noch zu implementieren Was soll die machen? drüber sprechen
 	}
 
-	
-	public static int getfreieMitarbeiter() {
+	public static int getfreieMitarbeiter()
+	{
 		return freieMitarbeiter;
 	}
 
-	public double getMonatlicheKosten() {
+	public double getMonatlicheKosten()
+	{
 		return monatlicheKosten;
 	}
 
-	public void setMonatlicheKosten() {
+	public void setMonatlicheKosten()
+	{
 		double mitarbeiterKosten = mitarbeiterPool * mitarbeiterLohn;
 		double betriebsKosten = 0;
 		double monatKosten;
 
-		for (int j = 0; j < 42; j++) { // Filialen durchgehen
-			for (int i = 0; i < Bezirke.length; i++) {
-				if (Bezirke[i].getFilialen(j).getBesitzer().equals(name)) {
-					betriebsKosten = betriebsKosten + Bezirke[i].getFilialen(j).getBetriebsKostenF();
-				}	
+		for (Bezirk b : bezirke)
+		{
+			for (int i = 0; i < b.getMaxFilialen(); i++)
+			{
+				if (b.getFiliale(i).getBesitzer().equals(name))
+				{
+					betriebsKosten += b.getFiliale(i).getBetriebsKostenF();
+				}
 			}
 		}
-		
 		monatKosten = mitarbeiterKosten + betriebsKosten;
-		
+
 		monatlicheKosten = monatKosten;
 	}
 
-	public double getLiquiditaet() {
+	public double getLiquiditaet()
+	{
 		return liquiditaet;
 	}
 
-	public void setLiquiditaet() {
+	public void setLiquiditaet()
+	{
 		liquiditaet = (kontostand / monatlicheKosten) * 100;
 	}
 
-	public Bezirk[] getBezirke() {
-		return Bezirke;
+	public Bezirk[] getBezirke()
+	{
+		return bezirke;
 	}
 
-	public void setBezirke(Bezirk[] bezirke) {
-		Bezirke = bezirke;
+	public void setBezirke(Bezirk[] bezirke)
+	{
+		this.bezirke = bezirke;
 	}
 
-	public VerbrauchT getVorraete() {
+	public VerbrauchT getVorraete()
+	{
 		return vorraete;
 	}
 
-	public void setVorraete(VerbrauchT vorraete) {
+	public void setVorraete(VerbrauchT vorraete)
+	{
 		this.vorraete = vorraete;
 	}
-	
-	
-	
+
+	public void berechneEinnahmen()
+	{
+		VerbrauchT sollVerbauch = new VerbrauchT();
+		for (Bezirk b : bezirke)
+		{
+			for (int i = 0; i < b.getMaxFilialen(); i++)
+			{
+				sollVerbauch.sum(b.getFiliale(i).getSollVerbrauch());
+
+			}
+		}
+		double umsatz = 0;
+		if (vorraete.groeßerGleichAls(sollVerbauch))
+		{
+			for (Bezirk b : bezirke)
+			{
+				for (int i = 0; i < b.getMaxFilialen(); i++)
+				{
+					umsatz += b.getFiliale(i).getEinnahmen();
+				}
+			}
+			vorraete.sub(sollVerbauch);
+		} else
+		{
+			for (Bezirk b : bezirke)
+			{
+				for (int i = 0; i < b.getMaxFilialen(); i++)
+				{
+					VerbrauchT tmp = sollVerbauch;
+					tmp.div(b.getFiliale(i).getSollVerbrauch()); // Prozentualler
+																	// Anteil
+																	// der
+																	// Filiale
+					tmp.mult(vorraete);
+					tmp.div(100);
+					umsatz += b.getFiliale(i).getEinnahmen(tmp);
+				}
+			}
+			vorraete = new VerbrauchT();
+		}
+		kontostand += umsatz;
+	}
 
 }
