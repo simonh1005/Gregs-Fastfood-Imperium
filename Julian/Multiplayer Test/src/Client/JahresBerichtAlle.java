@@ -7,11 +7,12 @@ public class JahresBerichtAlle {
 	
 	
 	public String toString(int jahr, int quartal){
+		// zu implementieren
 		return "test";
 	}
 	
 	public void add(QuartalsBericht bericht){
-		
+		// Schon vorhanden? setQuartalsBericht
 	}
 	
 	private JahresBerichtAlle(String[] qb)

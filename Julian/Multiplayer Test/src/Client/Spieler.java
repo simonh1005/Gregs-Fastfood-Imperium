@@ -1,5 +1,9 @@
 package Client;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
+
 public class Spieler {
 	private int mitarbeiterPool;
 	private static int freieMitarbeiter;
@@ -11,10 +15,30 @@ public class Spieler {
 	private double monatlicheKosten;
 	private double liquiditaet;
 	private int liquiditaetCounter = 0;
+	private SpielLogik parent;
+	private Socket socket;
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
 	
 	private Bezirk[] Bezirke = new Bezirk[8];	
+	
+	public Spieler(SpielLogik parent, String name, Socket socket){
+		this.parent = parent;
+		this.name = name;
+		this.socket = socket;
+	}
+	
+	public void sendToServer(String msg){
+		PrintStream raus;
+		try
+		{
+			raus = new PrintStream(socket.getOutputStream());
+			raus.println(msg);
+		} catch (IOException e)
+		{ // keine Prüfung, ob Nachricht wirklich ankommt, da Fehler sehr
+			// unwahrsceinlich und Nachricht nicht kritisch
+		}
+	}
 	
 	public int mitarbeiterzahlVeraendern(int menge) { // Menge kann z.B. +3 oder -3 sein. 
 		mitarbeiterPool = mitarbeiterPool + menge;
@@ -31,14 +55,9 @@ public class Spieler {
 		}
 		
 		if (liquiditaetCounter == -3) {		// 3xQuartale negative Liquidität
-			SpielLogik.spielBeenden();
+			parent.spielBeenden();
 		}
 	}
-
-	public void forschungBetreiben() {
-		// Entfällt
-	}
-
 	
 	public void filialeEroeffnen(int fid, int groeße, int typ, String nameBesitzer, int bID) {
 		Bezirke[bID].getFilialen(fid).setfID(fid);
@@ -50,11 +69,11 @@ public class Spieler {
 
 	
 	public void einkaufen(VerbrauchT einkauf) {
-		// noch zu implementieren		an Server
+		// noch zu implementieren		an Server / Mit Simon drüber reden
 	}
 
 	private void berechneRohstoffverbrauch(boolean ist) {
-		// noch zu implementieren		Was soll die machen?
+		// noch zu implementieren		Was soll die machen? drüber sprechen
 	}
 
 	
