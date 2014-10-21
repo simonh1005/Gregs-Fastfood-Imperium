@@ -37,7 +37,7 @@ public class Bezirk
 	}
 
 	public double verkaufen(int fid)
-	{ // /////////////////////////////////////////////////////
+	{ 
 		double verkaufsPreisF = 0;
 		for (int i = 0; i < Filialen.length; i++)
 		{
