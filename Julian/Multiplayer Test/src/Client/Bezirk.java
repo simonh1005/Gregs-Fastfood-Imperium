@@ -37,7 +37,7 @@ public class Bezirk
 	}
 
 	public double verkaufen(int fid)
-	{ // /////////////////////////////////////////////////////
+	{ 
 		double verkaufsPreisF = 0;
 		for (int i = 0; i < Filialen.length; i++)
 		{
@@ -112,7 +112,7 @@ public class Bezirk
 	public Filiale getFiliale(int fid)
 	{
 
-		return Filialen[fid]; // Filiale 0
+		return Filialen[fid]; 
 	}
 
 	public void setFiliale(Filiale filiale, int fid)

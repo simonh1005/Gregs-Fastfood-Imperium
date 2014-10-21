@@ -115,7 +115,6 @@ public class Spiel
 						Integer.parseInt(getDirectChildValue(f, "kaufpreis")));
 				z++;
 			}
-			// System.out.println("  AnzFilialen: " + anzFil);
 		}
 
 	}
