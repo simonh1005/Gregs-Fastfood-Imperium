@@ -18,7 +18,7 @@ public class Spieler
 	private int liquiditaetCounter = 0;
 	private SpielLogik parent;
 	private Socket socket;
-	private Marktpreis[] preise = new Marktpreis[4];		//Am Ende einer Runde zugesandt? vorher ein startwert?
+	private Marktpreis[] preise = new Marktpreis[4];		//Am Ende einer Runde zugesandt? vorher ein startwert?	Message Handler greift auf Spiellogik zu und ändert das hier?
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
 
@@ -199,5 +199,15 @@ public class Spieler
 		}
 		kontostand += umsatz;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 
 }

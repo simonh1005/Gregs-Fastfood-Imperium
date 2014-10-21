@@ -10,12 +10,6 @@ public class Marktpreis {
 	private String name;
 	private int id;
 	
-	private void einkaufen(int menge, int qualitaet){ ////////////////////////////////////////////
-		
-		//Server.Marktpreis.einkaufen(menge, qualitaet);					// An Server
-		getPrice(menge, qualitaet);
-	}
-	
 	public Marktpreis(double qualitaet1, double qualitaet2, double qualitaet3,
 			String name, int id)
 	{
@@ -27,12 +21,12 @@ public class Marktpreis {
 		this.id = id;
 	}
 
-	public double verbrauchZuPreis(VerbrauchT verbrauch){		// An Server Verbrauch senden und preis kriegen
-		double test = 1.45;
-		return test;
-	}
+//	public double verbrauchZuPreis(VerbrauchT verbrauch){		// Überhaupt notwendig oder durch einkaufen schon abgedeckt, da ja schon menge und Zutat geschickt wird?
+//		double test = 1.45;
+//		return test;
+//	}
 	
-	public double getPrice(int menge, int qualitaet){
+	public double getPrice(int menge, int qualitaet, Spieler spieler){	//Wie ist das hier implementiert serverseitig?
 		double[] tmp = //Server.Marktpreis.getPreise();
 		double preis = tmp[qualitaet];
 		return preis;

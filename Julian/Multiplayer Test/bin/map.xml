@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map>
-	<bezirk id="0" name="Heissen" einwohner="100" maxFilialen="5" boni="0,0,0.5">
+	<bezirk id="0" name="Heissen" einwohner="400000" maxFilialen="5" boni="0.25,-0.15,0.17">
 		<filiale>
 			<kaufpreis>100000</kaufpreis>
 			<name>Göthestraße</name>
@@ -34,7 +34,7 @@
 			<posY>78</posY>
 		</filiale>
 	</bezirk>
-	<bezirk id="1" name="Speldorf" einwohner="100" maxFilialen="6"  boni="0,0,0.5">
+	<bezirk id="1" name="Speldorf" einwohner="600000" maxFilialen="6"  boni="-0.1,0.2,0.07">
 		<filiale>
 			
 			<kaufpreis>100000</kaufpreis>
@@ -78,7 +78,7 @@
 			<posY>339</posY>			
 		</filiale>
 	</bezirk>
-	<bezirk id="2" name="Dümpten" einwohner="100" maxFilialen="6"  boni="0,0,0.5">
+	<bezirk id="2" name="Dümpten" einwohner="350000" maxFilialen="6"  boni="0.23,-0.15,0.13">
 		<filiale>
 			
 			<kaufpreis>100000</kaufpreis>
@@ -122,7 +122,7 @@
 			<posY>234</posY>
 		</filiale>
 	</bezirk>
-	<bezirk id="3" name="Stadtmitte" einwohner="100" maxFilialen="4"  boni="0,0,0.5">
+	<bezirk id="3" name="Stadtmitte" einwohner="800000" maxFilialen="4"  boni="0.02,0.14,0.15">
 		<filiale>
 			
 			<kaufpreis>100000</kaufpreis>
@@ -152,7 +152,7 @@
 			<posY>302</posY>			
 		</filiale>
 	</bezirk>
-	<bezirk id="4" name="Heimaterde" einwohner="100" maxFilialen="5"  boni="0,0,0.5">
+	<bezirk id="4" name="Heimaterde" einwohner="200000" maxFilialen="5"  boni="0.11,-0.1,0.25">
 		<filiale>
 			
 			<kaufpreis>100000</kaufpreis>
@@ -189,7 +189,7 @@
 			<posY>435</posY>			
 		</filiale>
 	</bezirk>
-	<bezirk id="5" name="Broich" einwohner="100" maxFilialen="5"  boni="0,0,0.5">
+	<bezirk id="5" name="Broich" einwohner="600000" maxFilialen="5"  boni="0.26,0.17,-0.08">
 		<filiale>
 			
 			<kaufpreis>100000</kaufpreis>
@@ -226,7 +226,7 @@
 			<posY>403</posY>			
 		</filiale>
 	</bezirk>
-	<bezirk id="6" name="Mintard" einwohner="100" maxFilialen="6"  boni="0,0,0.5">
+	<bezirk id="6" name="Mintard" einwohner="500000" maxFilialen="6"  boni="-0.13,0.05,0.24">
 		<filiale>
 			
 			<kaufpreis>100000</kaufpreis>
@@ -270,7 +270,7 @@
 			<posY>340</posY>
 		</filiale>
 	</bezirk>
-	<bezirk id="7" name="Selbeck" einwohner="100" maxFilialen="5"  boni="0,0,0.5">
+	<bezirk id="7" name="Selbeck" einwohner="350000" maxFilialen="5"  boni="0.17,0.24,-0.2">
 		<filiale>			
 			<kaufpreis>100000</kaufpreis>
 			<name>Rathausplatz</name>
