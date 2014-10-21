@@ -84,7 +84,6 @@ public class Spieler
 	public void filialeEroeffnen(int fid, int groeﬂe, int typ,
 			String nameBesitzer, int qualitaet)
 	{
-
 		bezirke[fid / 10].getFiliale(fid % 10).eroeffnen(groeﬂe, typ,
 				nameBesitzer, qualitaet);
 		sendToServer("<newFil>" + fid + "," + typ + "," + groeﬂe);		//Passt das so?////////////////////////////////////////////
@@ -93,14 +92,14 @@ public class Spieler
 	}
 
 	public void einkaufen(int menge, int qualit‰t, int id)
-	{
-		sendToServer("<einkauf>" + menge + "," + qualit‰t + "," + id); //<einkauf>int menge, int qualit‰t, int id 
+	{ 
 		int[] werte = vorraete.getZutat(id);
 		werte[qualit‰t-1] += menge;
 		double preis = preise[id].getPrice(menge, qualit‰t) * menge;
 		if (liquiditaetPruefen(kontostand, preis) == true) {
 			vorraete.setZutat(id, werte);
 			kontostand = kontostand - preis ;
+			sendToServer("<einkauf>" + menge + "," + qualit‰t + "," + id); //<einkauf>int menge, int qualit‰t, int id
 		}
 		
 	}

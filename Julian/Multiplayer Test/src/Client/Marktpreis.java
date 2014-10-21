@@ -20,16 +20,18 @@ public class Marktpreis {
 		this.name = name;
 		this.id = id;
 	}
-
-//	public double verbrauchZuPreis(VerbrauchT verbrauch){		// Überhaupt notwendig oder durch einkaufen schon abgedeckt, da ja schon menge und Zutat geschickt wird?
-//		double test = 1.45;
-//		return test;
-//	}
 	
 	public double getPrice(int menge, int qualitaet){	//Wie ist das hier implementiert serverseitig?
 		double[] tmp = new double [4];//Server.Marktpreis.getPreise();
 		double preis = tmp[qualitaet];
 		return preis;
+	}
+	
+	public static void readFromString(String preise){
+		String[] tmp = preise.split(">");
+		String[] tmp2 = tmp[1].split(",");
+		//...
+		//in ein [] int schreiben
 	}
 	
 	
