@@ -43,6 +43,7 @@ public class MessageHandler extends Thread
 									// the sender is saved
 				{
 					JOptionPane.showConfirmDialog(null, "Rundenedme");
+					parent.rundenEnde();
 					break;
 				}
 				case "<answer": // Antwort des Servers auf eine Anfrage, in

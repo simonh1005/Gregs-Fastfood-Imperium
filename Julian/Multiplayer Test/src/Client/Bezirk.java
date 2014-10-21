@@ -11,8 +11,7 @@ public class Bezirk
 	private Spieler parent;
 
 	private Filiale[] Filialen;
-	private int[] maxKundenVomServer = new int[42]; // Noch vom Server kriegen
-													// als int[]
+	private int[] maxKundenVomServer = new int[42]; 
 
 	public Bezirk(int id, String name, int einwohner, int maxFilialen,
 			int[] boni)
@@ -119,5 +118,7 @@ public class Bezirk
 	{
 		Filialen[fid] = filiale;
 	}
+	
+	
 
 }

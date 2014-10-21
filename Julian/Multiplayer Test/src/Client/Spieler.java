@@ -14,7 +14,7 @@ public class Spieler
 	private VerbrauchT vorratsBedarfSoll;
 	private VerbrauchT vorratsBedarfIst;
 	private double monatlicheKosten;
-	private double liquiditaet;
+	private double liquiditaet = 100;
 	private int liquiditaetCounter = 0;
 	private SpielLogik parent;
 	private Socket socket;
@@ -62,7 +62,7 @@ public class Spieler
 			liquiditaetCounter--;
 		}
 
-		if (liquiditaetCounter == -3)
+		if (liquiditaetCounter == -4)
 		{ // 3xQuartale negative Liquidit‰t
 			parent.spielBeenden();
 		}
@@ -80,14 +80,24 @@ public class Spieler
 		return l;
 	}
 
+	public void MAAnzAendern(int zahl, int fid){
+		bezirke[fid / 10].getFiliale(fid % 10).mitarbeiterzahlAendern(zahl);
+	}
+	
+	public void filialeVerkaufen(int fid){
+		bezirke[fid / 10].getFiliale(fid % 10).verkaufen();
+	}
 
 	public void filialeEroeffnen(int fid, int groeﬂe, int typ,
 			String nameBesitzer, int qualitaet)
 	{
-		bezirke[fid / 10].getFiliale(fid % 10).eroeffnen(groeﬂe, typ,
-				nameBesitzer, qualitaet);
-		sendToServer("<newFil>" + fid + "," + typ + "," + groeﬂe);		//Passt das so?////////////////////////////////////////////
-		sendToServer("<FilUpd>" + name + "," + qualitaet);				// Passt das so?///////////////////////////
+		
+		if (liquiditaetPruefen(kontostand, bezirke[fid / 10].getFiliale(fid % 10).getKaufPreis()) == true) {
+			bezirke[fid / 10].getFiliale(fid % 10).eroeffnen(groeﬂe, typ,
+					nameBesitzer, qualitaet);
+			sendToServer("<newFil>" + fid + "," + typ + "," + groeﬂe);
+			sendToServer("<FilUpd>" + name + "," + qualitaet);
+		}
 
 	}
 
@@ -223,6 +233,7 @@ public class Spieler
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	
 	
 }
