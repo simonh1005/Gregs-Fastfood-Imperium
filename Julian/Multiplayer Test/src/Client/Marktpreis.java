@@ -33,7 +33,7 @@ public class Marktpreis {
 	}
 	
 	public double getPrice(int menge, int qualitaet){
-		double[] tmp = Server.Marktpreis.getPreise();
+		double[] tmp = //Server.Marktpreis.getPreise();
 		double preis = tmp[qualitaet];
 		return preis;
 	}

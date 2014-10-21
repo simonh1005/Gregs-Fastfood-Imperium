@@ -18,7 +18,7 @@ public class Spieler
 	private int liquiditaetCounter = 0;
 	private SpielLogik parent;
 	private Socket socket;
-	private Marktpreis[] preise = new Marktpreis[4];
+	private Marktpreis[] preise = new Marktpreis[4];		//Am Ende einer Runde zugesandt? vorher ein startwert?
 
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
 
@@ -29,7 +29,6 @@ public class Spieler
 		this.parent = parent;
 		this.name = name;
 		this.socket = socket;
-		//preise[1] = new Marktpreis();
 	}
 
 	public void sendToServer(String msg)
@@ -75,13 +74,18 @@ public class Spieler
 
 		bezirke[fid / 10].getFiliale(fid % 10).eroeffnen(groeße, typ,
 				nameBesitzer, qualitaet);
+		sendToServer("<newFil>" + fid + "," + typ + "," + groeße);		//Passt das so?////////////////////////////////////////////
+		sendToServer("<FilUpd>" + name + "," + qualitaet);				// Passt das so?///////////////////////////
 
 	}
 
 	public void einkaufen(int menge, int qualität, int id)
 	{
-		// noch zu implementieren an Server / Mit Simon drüber reden
-		sendToServer("<einkauf>" + menge + "," + qualität + "," +id); //<einkauf>int menge, int qualität, int id
+		sendToServer("<einkauf>" + menge + "," + qualität + "," + id); //<einkauf>int menge, int qualität, int id 
+		int[] werte = vorraete.getZutat(id);
+		werte[qualität-1] += menge;
+		vorraete.setZutat(id, werte);
+		kontostand = kontostand - (preise[id].getPrice(menge, qualität) * menge) ;
 	}
 
 	public static int getfreieMitarbeiter()
@@ -123,6 +127,14 @@ public class Spieler
 	public void setLiquiditaet()
 	{
 		liquiditaet = (kontostand / monatlicheKosten) * 100;
+	}
+
+	public Marktpreis[] getPreise() {
+		return preise;
+	}
+
+	public void setPreise(Marktpreis[] preise) {
+		this.preise = preise;
 	}
 
 	public Bezirk[] getBezirke()
