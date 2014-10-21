@@ -16,7 +16,6 @@ public class Filiale {
 	private int qualitaet;
 	private double kaufPreis;
 	private double verkaufsPreis;
-	private int freieMitarbeiter = Spieler.getfreieMitarbeiter();
 	private double betriebsKostenF;
 	private String name;
 	private int maxKunden;
@@ -55,12 +54,13 @@ public class Filiale {
 			maxMitarbeiter = 60;
 		}
 
-		if (mitarbeiter > maxMitarbeiter) {
+		if (mitarbeiter <= maxMitarbeiter) {
 			mitarbeiter = mitarbeiter + zahl;
-			freieMitarbeiter = freieMitarbeiter - zahl;
+			return zahl;
+			
 		}
 
-		return mitarbeiter;
+		return 0;
 	}
 
 	
@@ -257,7 +257,6 @@ public class Filiale {
 		absatz = 0;
 		groeße = 0;
 		qualitaet = 0;
-		freieMitarbeiter = 0;
 		return FilialeVerkaufsPreis;
 	}
 
@@ -347,14 +346,6 @@ public class Filiale {
 
 	public void setKaufPreis(double kaufPreis) {
 		this.kaufPreis = kaufPreis;
-	}
-
-	public int getFreieMitarbeiter() {
-		return freieMitarbeiter;
-	}
-
-	public void setFreieMitarbeiter(int freieMitarbeiter) {
-		this.freieMitarbeiter = freieMitarbeiter;
 	}
 
 	public double getBetriebsKostenF() {

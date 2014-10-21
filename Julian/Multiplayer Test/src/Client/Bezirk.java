@@ -1,20 +1,22 @@
 package Client;
 
+
 public class Bezirk
 {
 	private String name;
 	private int einwohner;
-	private int[] boni = new int[3];
+	private double[] boni = new double[3];
 	private int freieKundschaft;
 	private int maxFilialen;
 	private int bID;
 	private Spieler parent;
+	private int filialenGesetzt = 0;
 
 	private Filiale[] Filialen;
 	private int[] maxKundenVomServer = new int[42]; 
 
 	public Bezirk(int id, String name, int einwohner, int maxFilialen,
-			int[] boni)
+			double[] boni)
 	{
 		this.bID = id;
 		this.name = name;
@@ -24,6 +26,10 @@ public class Bezirk
 		this.Filialen = new Filiale[maxFilialen];
 	}
 
+	public int getAnzFilialen(){
+		return maxFilialen;
+	}
+	
 	public void setParent(Spieler parent)
 	{
 		this.parent = parent;
@@ -68,12 +74,12 @@ public class Bezirk
 		this.einwohner = einwohner;
 	}
 
-	public int[] getBoni()
+	public double[] getBoni()
 	{
 		return boni;
 	}
 
-	public void setBoni(int[] boni)
+	public void setBoni(double[] boni)
 	{
 		this.boni = boni;
 	}
@@ -119,6 +125,14 @@ public class Bezirk
 		Filialen[fid] = filiale;
 	}
 	
-	
+	public void addNewFiliale(String name, int kaufpreis)
+	{
+		if (filialenGesetzt < maxFilialen)
+		{
+			Filialen[filialenGesetzt] = new Filiale(this.bID*10+filialenGesetzt, name, kaufpreis);
+			filialenGesetzt++;
+		}
+		//ansonsten evtl Fehler werfen
+	}
 
 }

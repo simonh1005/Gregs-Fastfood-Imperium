@@ -109,7 +109,7 @@ public class UIWindow {
 				//		+ bezirk_node.item(i).getAttributes().getNamedItem("name")
 				//				.getNodeValue());
 				int anzFil = Integer.parseInt(bezirk_node.item(i).getAttributes().getNamedItem("maxFilialen").getNodeValue());
-				int[] boni = {1,1,1};
+				double[] boni = {1,1,1};
 				bezirke[i] = new Bezirk(
 								Integer.parseInt(bezirk_node.item(i).getAttributes()
 								.getNamedItem("id").getNodeValue()), bezirk_node.item(i)
