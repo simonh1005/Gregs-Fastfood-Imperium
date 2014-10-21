@@ -112,7 +112,7 @@ public class Bezirk
 	public Filiale getFiliale(int fid)
 	{
 
-		return Filialen[fid]; // Filiale 0
+		return Filialen[fid]; 
 	}
 
 	public void setFiliale(Filiale filiale, int fid)
