@@ -50,7 +50,7 @@ public class Spieler
 		return mitarbeiterPool;
 	}
 
-	public void liquiditaetPruefen()
+	public void ausscheidenPruefen()
 	{
 		if (liquiditaet < 100)
 		{
@@ -67,6 +67,19 @@ public class Spieler
 			parent.spielBeenden();
 		}
 	}
+	
+	public boolean liquiditaetPruefen(double kontostand, double preis){
+		boolean l = false;
+		
+		if (kontostand > preis) {
+			l = true;
+		} else {
+			l = false;
+		}
+		
+		return l;
+	}
+
 
 	public void filialeEroeffnen(int fid, int groeﬂe, int typ,
 			String nameBesitzer, int qualitaet)
@@ -84,8 +97,12 @@ public class Spieler
 		sendToServer("<einkauf>" + menge + "," + qualit‰t + "," + id); //<einkauf>int menge, int qualit‰t, int id 
 		int[] werte = vorraete.getZutat(id);
 		werte[qualit‰t-1] += menge;
-		vorraete.setZutat(id, werte);
-		kontostand = kontostand - (preise[id].getPrice(menge, qualit‰t) * menge) ;
+		double preis = preise[id].getPrice(menge, qualit‰t) * menge;
+		if (liquiditaetPruefen(kontostand, preis) == true) {
+			vorraete.setZutat(id, werte);
+			kontostand = kontostand - preis ;
+		}
+		
 	}
 
 	public static int getfreieMitarbeiter()
@@ -209,5 +226,4 @@ public class Spieler
 	}
 	
 	
-
 }
