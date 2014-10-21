@@ -26,8 +26,8 @@ public class Marktpreis {
 //		return test;
 //	}
 	
-	public double getPrice(int menge, int qualitaet, Spieler spieler){	//Wie ist das hier implementiert serverseitig?
-		double[] tmp = //Server.Marktpreis.getPreise();
+	public double getPrice(int menge, int qualitaet){	//Wie ist das hier implementiert serverseitig?
+		double[] tmp = new double [4];//Server.Marktpreis.getPreise();
 		double preis = tmp[qualitaet];
 		return preis;
 	}
