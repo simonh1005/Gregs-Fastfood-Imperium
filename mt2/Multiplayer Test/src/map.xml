@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bezirk id="0" name="Heissen" einwohner="400000" maxFilialen="5" boni="0.25,-0.15,0.17">
+		<filiale>
+			<kaufpreis>100000</kaufpreis>
+			<name>Göthestraße</name>
+			<posX>315</posX>
+			<posY>120</posY>
+		</filiale>
+		<filiale>			
+			<kaufpreis>120000</kaufpreis>
+			<name>Schloßallee</name>
+			<posX>235</posX>
+			<posY>126</posY>
+		</filiale>
+		<filiale>			
+			<kaufpreis>100000</kaufpreis>
+			<name>Lessingstraße</name>
+			<posX>308</posX>
+			<posY>188</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Badstraße2</name>
+			<posX>221</posX>
+			<posY>202</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Bahnhofstraße</name>
+			<posX>261</posX>
+			<posY>78</posY>
+		</filiale>
+	</bezirk>
+	<bezirk id="1" name="Speldorf" einwohner="600000" maxFilialen="6"  boni="-0.1,0.2,0.07">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>149</posX>
+			<posY>190</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>120</posX>
+			<posY>245</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>172</posX>
+			<posY>279</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>247</posX>
+			<posY>283</posY>			
+		</filiale>
+			<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Schillerstraße</name>
+			<posX>130</posX>
+			<posY>320</posY>			
+		</filiale>
+			<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Trollstraße</name>
+			<posX>277</posX>
+			<posY>339</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="2" name="Dümpten" einwohner="350000" maxFilialen="6"  boni="0.23,-0.15,0.13">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>370</posX>
+			<posY>116</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Meisfeld</name>
+			<posX>415</posX>
+			<posY>111</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>480</posX>
+			<posY>87</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>443</posX>
+			<posY>200</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>428</posX>
+			<posY>156</posY>			
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>415</posX>
+			<posY>234</posY>
+		</filiale>
+	</bezirk>
+	<bezirk id="3" name="Stadtmitte" einwohner="800000" maxFilialen="4"  boni="0.02,0.14,0.15">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>320</posX>
+			<posY>232</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>350</posX>
+			<posY>262</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>424</posX>
+			<posY>293</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>368</posX>
+			<posY>302</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="4" name="Heimaterde" einwohner="200000" maxFilialen="5"  boni="0.11,-0.1,0.25">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>140</posX>
+			<posY>419</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>240</posX>
+			<posY>390</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>290</posX>
+			<posY>442</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>104</posX>
+			<posY>474</posY>			
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Augartenstraße</name>
+			<posX>205</posX>
+			<posY>435</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="5" name="Broich" einwohner="600000" maxFilialen="5"  boni="0.26,0.17,-0.08">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>337</posX>
+			<posY>368</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>431</posX>
+			<posY>346</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>488</posX>
+			<posY>470</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>370</posX>
+			<posY>474</posY>			
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Herrmannstraße</name>
+			<posX>401</posX>
+			<posY>403</posY>			
+		</filiale>
+	</bezirk>
+	<bezirk id="6" name="Mintard" einwohner="500000" maxFilialen="6"  boni="-0.13,0.05,0.24">
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>517</posX>
+			<posY>200</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>570</posX>
+			<posY>244</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>614</posX>
+			<posY>301</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Parkstraße</name>
+			<posX>526</posX>
+			<posY>280</posY>			
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Feldstraße</name>
+			<posX>489</posX>
+			<posY>245</posY>
+		</filiale>
+		<filiale>
+			
+			<kaufpreis>100000</kaufpreis>
+			<name>Choosestraße</name>
+			<posX>549</posX>
+			<posY>340</posY>
+		</filiale>
+	</bezirk>
+	<bezirk id="7" name="Selbeck" einwohner="350000" maxFilialen="5"  boni="0.17,0.24,-0.2">
+		<filiale>			
+			<kaufpreis>100000</kaufpreis>
+			<name>Rathausplatz</name>
+			<posX>600</posX>
+			<posY>435</posY>
+		</filiale>
+		<filiale>			
+			<kaufpreis>100000</kaufpreis>
+			<name>Opernstraße</name>
+			<posX>730</posX>
+			<posY>426</posY>
+		</filiale>
+		<filiale>			
+			<kaufpreis>100000</kaufpreis>
+			<name>Theaterplatz</name>
+			<posX>681</posX>
+			<posY>525</posY>
+		</filiale>
+		<filiale>			
+			<kaufpreis>100000</kaufpreis>
+			<name>Letztestraße</name>
+			<posX>529</posX>
+			<posY>379</posY>			
+		</filiale>
+		<filiale>			
+			<kaufpreis>100000</kaufpreis>
+			<name>Goethestarße</name>
+			<posX>572</posX>
+			<posY>483</posY>			
+		</filiale>
+	</bezirk>
+</map>

@@ -7,19 +7,19 @@ import java.net.Socket;
 public class Spieler
 {
 	private int mitarbeiterPool;
-	private static int freieMitarbeiter;
+	private int freieMitarbeiter;
 	private String name;
 	private double kontostand;
 	private VerbrauchT vorraete;
 	private VerbrauchT vorratsBedarfSoll;
 	private VerbrauchT vorratsBedarfIst;
 	private double monatlicheKosten;
-	private double liquiditaet;
+	private double liquiditaet = 100;
 	private int liquiditaetCounter = 0;
 	private SpielLogik parent;
 	private Socket socket;
-	private Marktpreis[] preise = new Marktpreis[4];		//Am Ende einer Runde zugesandt? vorher ein startwert?	Message Handler greift auf Spiellogik zu und ‰ndert das hier?
-
+	private Marktpreis[] preise = new Marktpreis[4];		
+	
 	private final double mitarbeiterLohn = 6.50; // Konstanter Lohn
 
 	private Bezirk[] bezirke = new Bezirk[8];
@@ -62,7 +62,7 @@ public class Spieler
 			liquiditaetCounter--;
 		}
 
-		if (liquiditaetCounter == -3)
+		if (liquiditaetCounter == -4)
 		{ // 3xQuartale negative Liquidit‰t
 			parent.spielBeenden();
 		}
@@ -80,14 +80,28 @@ public class Spieler
 		return l;
 	}
 
+	public void MAAnzAendern(int zahl, int fid){
+		if ((freieMitarbeiter - zahl) > 0) {
+			freieMitarbeiter += bezirke[fid / 10].getFiliale(fid % 10).mitarbeiterzahlAendern(zahl);	
+		}
+	}
+	
+	public void filialeVerkaufen(int fid){
+		kontostand += bezirke[fid / 10].getFiliale(fid % 10).verkaufen();
+	}
+	
+	
 
 	public void filialeEroeffnen(int fid, int groeﬂe, int typ,
 			String nameBesitzer, int qualitaet)
 	{
-		bezirke[fid / 10].getFiliale(fid % 10).eroeffnen(groeﬂe, typ,
-				nameBesitzer, qualitaet);
-		sendToServer("<newFil>" + fid + "," + typ + "," + groeﬂe);		//Passt das so?////////////////////////////////////////////
-		sendToServer("<FilUpd>" + name + "," + qualitaet);				// Passt das so?///////////////////////////
+		
+		if (liquiditaetPruefen(kontostand, bezirke[fid / 10].getFiliale(fid % 10).getKaufPreis()) == true) {
+			bezirke[fid / 10].getFiliale(fid % 10).eroeffnen(groeﬂe, typ,
+					nameBesitzer, qualitaet);
+			sendToServer("<newFil>" + fid + "," + typ + "," + groeﬂe);
+			sendToServer("<FilUpd>" + name + "," + qualitaet);
+		}
 
 	}
 
@@ -104,7 +118,7 @@ public class Spieler
 		
 	}
 
-	public static int getfreieMitarbeiter()
+	public  int getfreieMitarbeiter()
 	{
 		return freieMitarbeiter;
 	}
@@ -223,6 +237,12 @@ public class Spieler
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void mitarbeiterEinstellen(int menge){
+		mitarbeiterPool += menge;
+	}
+	
+	
 	
 	
 }

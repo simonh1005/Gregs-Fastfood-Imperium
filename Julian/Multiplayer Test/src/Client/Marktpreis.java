@@ -30,7 +30,6 @@ public class Marktpreis {
 		String[] tmp = preis.split(">");	//<einkauf> , 1,1,1  2,2,2  3,3,3  4,4,4
 		String[] z11 = tmp[1].split(",");	//1,1,1  2,2,2  3,3,3  4,4,4
 		
-		double p;
 		int z;
 		
 		for (int i = 0; i < 4; i++) {
@@ -49,6 +48,11 @@ public class Marktpreis {
 		qualitaet1 = preise[0];
 		qualitaet2 = preise[1];
 		qualitaet3 = preise[2];
+	}
+	
+	public static void setMarktPreis(int id, String name, double qualitaet1,double qualitaet2, double qualitaet3)
+	{
+		preise[id] = new Marktpreis(qualitaet1, qualitaet2, qualitaet3, name, id);
 	}
 
 }
